@@ -8,3 +8,4 @@ let meat = new category('meat', [chicken])
 
 console.log(chicken)
 console.log(meat)
+
