@@ -6,8 +6,9 @@
 2. description
 3. dueDate
 4. cost (with calculations for tax)
-5. notes
-6. checklist
+5. checklist
+6. payment method (cash, card)
+7. priority
 
 ### instead of projects will do spending categories that items can be put in
 
