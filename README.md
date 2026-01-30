@@ -16,3 +16,5 @@
 - default 'project' is just undefined spending
 - users are able to then create new spending categories and choose which spending categories their item go into
 
+
+

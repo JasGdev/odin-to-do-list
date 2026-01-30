@@ -1,11 +1,21 @@
 // src/index.js
 import "./styles.css";
-import listItem from './listItem.js'
-import category from './category.js'
-import controller from "./controller.js";
+import listItem from './items/listItem.js'
+import category from './items/category.js'
+import logicController from "./controllers/logicController.js";
+import displayController from './controllers/displayController.js'
+import inputController from "./controllers/inputController.js";
+
+// Input Controller calls the logic controller and display controller
+// Logic controller tells the display controller what to display
+
+const control = logicController()
+const displayControl = displayController()
+inputController(displayControl)
+
+// inputController(displayControl);
 
 
-let control = controller()
 control.addItem("Groceries",
     1,
     "Food",

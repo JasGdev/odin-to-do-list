@@ -1,7 +1,8 @@
-import listItem from './listItem.js'
-import category from './category.js'
+import listItem from '../items/listItem.js'
+import category from '../items/category.js'
+import displayController from './displayController.js'
 
-export default function controller(){
+export default function logicController(){
     let itemList = [];
     let categoryList = [];
     // based on japan's tax on food items
@@ -10,22 +11,32 @@ export default function controller(){
     // tally of total spending
     let totalSpending = 0;
 
-    // add item
-    let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPaymentMethod, itemPriority,) => {
-        // updates itemList
-        const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPaymentMethod, itemPriority,);
-        itemList.push(newItem)
-        // updates categoryList
-        const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
-        if (categoryFound) {
-            categoryFound.addItem(newItem);
-        } else {
-            const newCategory = new category(itemCategory);
-            newCategory.addItem(newItem)
-            categoryList.push(newCategory)
-        }
-        totalSpending += itemCost;       
+
+    // // add item
+    // let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
+    //     // updates itemList
+    //     const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+    //     itemList.push(newItem)
+    //     // updates categoryList
+    //     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
+    //     if (categoryFound) {
+    //         categoryFound.addItem(newItem);
+    //     } else {
+    //         const newCategory = new category(itemCategory);
+    //         newCategory.addItem(newItem)
+    //         categoryList.push(newCategory)
+    //     }
+    //     totalSpending += itemCost;       
+    // }
+
+    let addItem = () => {
+        // call displayController to bring up addItem page
+        // addItem page will have 
     }
+
+
+
+
     // remove item by id
     let removeItem = (idToRemove) => {
         const itemToRemove = itemList.find((item) => item.id == idToRemove)
