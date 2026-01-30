@@ -24,13 +24,10 @@ export default function controller(){
             newCategory.addItem(newItem)
             categoryList.push(newCategory)
         }
-
-
-
-        // update totalSpending
         totalSpending += itemCost;       
     }
     // remove item
+    
 
 
     // add additional information to a specific item

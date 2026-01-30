@@ -1,5 +1,5 @@
 export default class listItem {
-    constructor(name, cost, category, description, Date,  paymentMethod, priority, ){
+    constructor(name, cost, category, description, Date,  paymentMethod, priority){
         // need input
         this.name = name;
         this.cost = cost;
@@ -12,6 +12,7 @@ export default class listItem {
         this.paymentMethod = paymentMethod;
         this.priority = priority;
         this.completeStatus = false;
+        this.id = crypto.randomUUID(); 
     }
     
 
