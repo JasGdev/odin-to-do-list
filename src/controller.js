@@ -9,7 +9,6 @@ export default function controller(){
 
     // tally of total spending
     let totalSpending = 0;
-    let totalSpendingTax = totalSpending * (1 + tax);
 
     // add item
     let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPaymentMethod, itemPriority,) => {
@@ -17,25 +16,38 @@ export default function controller(){
         const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPaymentMethod, itemPriority,);
         itemList.push(newItem)
         // updates categoryList
-        const newCategory = new category(itemCategory, categoryList, itemCost, newItem);
-        newCategory.addItem(itemCategory, categoryList, itemCost, newItem);
+        const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
+        if (categoryFound) {
+            categoryFound.totalSpending += itemCost;
+            categoryFound.items.push(newItem)
+        } else {
+            const newCategory = new category(itemCategory, newItem);
+            categoryList.push(newCategory)
+        }
+
+
+
+
+
         // update totalSpending
         totalSpending += itemCost;       
     }
-
-    let displayItem = () => {
-        console.log(itemList);
-        console.log(categoryList);
-        console.log(`current spending is $${totalSpending}`)
-        
-    }
-
     // remove item
+
 
     // add additional information to a specific item
 
     // change information on items
-        return { addItem, displayItem }
+        
+    // Temporary displayitem which will be implemented in UI later
+    let displayItem = () => {
+        console.log(itemList);
+        console.log(categoryList);
+        console.log(`current spending is $${totalSpending}`)
+
+    }
+    
+    return { addItem, displayItem }
 }
 
 
