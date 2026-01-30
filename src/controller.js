@@ -2,8 +2,8 @@ import listItem from './listItem.js'
 import category from './category.js'
 
 export default function controller(){
-    const itemList = [];
-    const categoryList = [];
+    let itemList = [];
+    let categoryList = [];
     // based on japan's tax on food items
     const tax = 0.08
 
@@ -26,15 +26,24 @@ export default function controller(){
         }
         totalSpending += itemCost;       
     }
-    // remove item
-    
+    // remove item by id
+    let removeItem = (idToRemove) => {
+        const itemToRemove = itemList.find((item) => item.id == idToRemove)
+        console.log(itemToRemove)
+        totalSpending -= itemToRemove.cost
+        // remove item from category
+        const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
+        categoryFound.removeItem(idToRemove, itemToRemove.cost)
+        // remove item from itemList
+        itemList = itemList.filter((item) => item.id !== idToRemove);
+    }
 
 
     // add additional information to a specific item
 
     // change information on items
         
-    // Temporary displayitem which will be implemented in UI later
+    // Temporary display item which will be implemented in UI later
     let displayItem = () => {
         console.log(itemList);
         console.log(categoryList);
@@ -42,7 +51,7 @@ export default function controller(){
 
     }
     
-    return { addItem, displayItem }
+    return { addItem, displayItem, removeItem, }
 }
 
 

@@ -44,3 +44,7 @@ control.addItem(
 control.displayItem();
 
 
+
+
+globalThis.control = control;
+

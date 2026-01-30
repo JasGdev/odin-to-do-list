@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="actions">
+                <div class="add">
+                    <button type="button" class="addBtn">Add item</button>
+                </div>
+                <div class="search">
+                    <form action="#" >
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="today">
+                    <button type="button" class="todayBtn">Today</button>
+                </div>
+                <div class="summary">
+                    <button type="button" class="summaryBtn">Summary</button>
+                </div>
+            </div>
+            <div class="categories">
+                <div class="categoryLabel">Categories</div>
+                <div class="categoryItems"></div>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
     
 </body>
 </html>

@@ -9,4 +9,9 @@ export default class category {
         this.items.push(item);
         this.totalSpending += item.cost;
     }
+
+    removeItem(idToRemove, itemToRemoveCost){
+        this.items = this.items.filter((item) => item.id !== idToRemove);
+        this.totalSpending -= itemToRemoveCost;
+    }
 }
