@@ -29,10 +29,6 @@ export default function logicController(){
         totalSpending += itemCost;       
     }
 
-
-
-
-
     // remove item by id
     let removeItem = (idToRemove) => {
         const itemToRemove = itemList.find((item) => item.id == idToRemove)
@@ -45,6 +41,12 @@ export default function logicController(){
         itemList = itemList.filter((item) => item.id !== idToRemove);
     }
 
+    // returns itemList
+    let getItemList = () => {
+        return itemList
+    }
+     
+
 
     // add additional information to a specific item
 
@@ -55,10 +57,9 @@ export default function logicController(){
         console.log(itemList);
         console.log(categoryList);
         console.log(`current spending is $${totalSpending}`)
-
     }
     
-    return { addItem, displayItem, removeItem, }
+    return { addItem, displayItem, removeItem, getItemList}
 }
 
 

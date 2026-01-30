@@ -2,6 +2,8 @@
 import "./styles/styles.css";
 import "./styles/sidebar.css";
 import "./styles/addItemPage.css";
+import "./styles/itemListPage.css";
+
 
 import logicController from "./controllers/logicController.js";
 import displayController from './controllers/displayController.js'
@@ -12,21 +14,22 @@ import inputController from "./controllers/inputController.js";
 // Input Controller calls the logic controller and display controller
 // Logic controller tells the display controller what to display
 
-const control = logicController()
-const displayControl = displayController()
-inputController(displayControl, control)
+const logicControl = logicController()
+const displayControl = displayController(logicControl)
+inputController(displayControl, logicControl)
+
 
 // inputController(displayControl);
 
 
-control.addItem("Groceries",
+logicControl.addItem("Groceries",
     1,
     "Food",
     "Weekly supermarket shopping",
     "2026-02-02",
     "Medium");
 
-control.addItem(
+logicControl.addItem(
     "Train Pass",
     1,
     "Transport",
@@ -34,7 +37,7 @@ control.addItem(
     "2026-02-01",
     "High");
 
-control.addItem(
+logicControl.addItem(
     "Laptop Repair",
     1,
     "Maintenance",
@@ -42,7 +45,7 @@ control.addItem(
     "2026-02-05",
     "High");
 
-control.addItem(
+logicControl.addItem(
     "Bike Repair",
     1,
     "Maintenance",
@@ -50,10 +53,10 @@ control.addItem(
     "2026-02-05",
     "High");
 
-control.displayItem();
+logicControl.displayItem();
 
 
 
 
-globalThis.control = control;
+globalThis.control = logicControl;
 

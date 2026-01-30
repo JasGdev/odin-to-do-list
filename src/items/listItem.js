@@ -10,7 +10,6 @@ export default class listItem {
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.completeStatus = false;
         this.id = crypto.randomUUID(); 
     }
     

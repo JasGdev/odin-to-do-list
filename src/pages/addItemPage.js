@@ -1,8 +1,7 @@
 export default function addItemPage(){
     const content = document.querySelector('.content');
     const modalContent = document.querySelector('.modalContent')
-
-    content.innerHTML = '';
+    
     modalContent.innerHTML ='';
 
 

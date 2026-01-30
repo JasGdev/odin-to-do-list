@@ -1,11 +1,9 @@
-import logicController from "./logicController.js";
-import displayController from "./displayController.js"
-
 export default function inputController(displayControl, logicControl) {
     const modal = document.getElementById('myModal');
     const openBtn = document.getElementById('openModalBtn');
     const closeBtn = document.getElementById('closeModalBtn');
 
+    // for adding item
     (function addItemModalSetup(){
         openBtn.addEventListener('click', () => {
             modal.showModal();
@@ -45,7 +43,6 @@ export default function inputController(displayControl, logicControl) {
         return today
     }
 
-
     function addItemSubmit(){
         const addItemForm = document.querySelector('.addItemForm')
         addItemForm.addEventListener('submit', function (e) {
@@ -68,10 +65,14 @@ export default function inputController(displayControl, logicControl) {
             logicControl.addItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
             addItemForm.reset();
             modal.close();
+
+            // want to call the display controller here to REFRESH DISPLAY
             logicControl.displayItem();
         })
         
     };
+
+    // for Item List
 
 
 }
