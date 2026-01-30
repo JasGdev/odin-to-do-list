@@ -1,6 +1,12 @@
 export default function addItemPage(){
+    
+
+
+
     const content = document.querySelector('.content');
     content.innerHTML = '';
+
+    const modal = document.createElement('dialog');
 
 
     const pageContainer = document.createElement('div');
@@ -29,10 +35,10 @@ export default function addItemPage(){
     </div>
     <div class="inputDiv">
         <label for="description">Description</label>
-        <input type="text" name="description"/>
+        <textarea name="description"></textarea>
     </div>
     <div class="inputDiv">
-        <label for="date">Date of purchase</label>
+        <label for="date">Date purchased</label>
         <input type="date" name="date"/>
     </div>
     <div class="inputDiv">
@@ -50,6 +56,9 @@ export default function addItemPage(){
     <div class="inputDiv">
         <label for="name">Item name</label>
         <input type="text" name="name" required />
+    </div>
+    <div class="form-submit">
+    <input type="submit" value="Add item" />
     </div>
 
 

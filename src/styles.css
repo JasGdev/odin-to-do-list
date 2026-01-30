@@ -96,15 +96,29 @@ form {
 }
 
 .page.addItemPage{
-    background-color: rgb(226, 226, 226);
-    height: 80%;
-    width: 50%;
+    background-color: rgb(219, 219, 219);
+    height: 500px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .page.addItemPage form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+
+.inputDiv {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content textarea, .content input{
+    width: 170px;
 }
 
