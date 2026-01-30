@@ -1,5 +1,5 @@
 export default class listItem {
-    constructor(name, cost, category, description, dueDate,  paymentMethod, priority, ){
+    constructor(name, cost, category, description, Date,  paymentMethod, priority, ){
         // need input
         this.name = name;
         this.cost = cost;
@@ -8,7 +8,7 @@ export default class listItem {
         // optional input after item creation or
         // by selection additional info on item creation
         this.description = description;
-        this.dueDate = dueDate;
+        this.Date = Date;
         this.paymentMethod = paymentMethod;
         this.priority = priority;
         this.completeStatus = false;
