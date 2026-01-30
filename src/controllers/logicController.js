@@ -12,27 +12,23 @@ export default function logicController(){
     let totalSpending = 0;
 
 
-    // // add item
-    // let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
-    //     // updates itemList
-    //     const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
-    //     itemList.push(newItem)
-    //     // updates categoryList
-    //     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
-    //     if (categoryFound) {
-    //         categoryFound.addItem(newItem);
-    //     } else {
-    //         const newCategory = new category(itemCategory);
-    //         newCategory.addItem(newItem)
-    //         categoryList.push(newCategory)
-    //     }
-    //     totalSpending += itemCost;       
-    // }
-
-    let addItem = () => {
-        // call displayController to bring up addItem page
-        // addItem page will have 
+    // add item
+    let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
+        // updates itemList
+        const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+        itemList.push(newItem)
+        // updates categoryList
+        const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
+        if (categoryFound) {
+            categoryFound.addItem(newItem);
+        } else {
+            const newCategory = new category(itemCategory);
+            newCategory.addItem(newItem)
+            categoryList.push(newCategory)
+        }
+        totalSpending += itemCost;       
     }
+
 
 
 

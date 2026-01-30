@@ -14,7 +14,7 @@ import inputController from "./controllers/inputController.js";
 
 const control = logicController()
 const displayControl = displayController()
-inputController(displayControl)
+inputController(displayControl, control)
 
 // inputController(displayControl);
 
@@ -24,7 +24,6 @@ control.addItem("Groceries",
     "Food",
     "Weekly supermarket shopping",
     "2026-02-02",
-    "Credit Card",
     "Medium");
 
 control.addItem(
@@ -33,7 +32,6 @@ control.addItem(
     "Transport",
     "Monthly commuter pass",
     "2026-02-01",
-    "IC Card",
     "High");
 
 control.addItem(
@@ -42,7 +40,6 @@ control.addItem(
     "Maintenance",
     "Keyboard replacement",
     "2026-02-05",
-    "Cash",
     "High");
 
 control.addItem(
@@ -51,7 +48,6 @@ control.addItem(
     "Maintenance",
     "Keyboard replacement",
     "2026-02-05",
-    "Cash",
     "High");
 
 control.displayItem();

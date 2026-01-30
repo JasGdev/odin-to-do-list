@@ -1,13 +1,12 @@
 import logicController from "./logicController.js";
 import displayController from "./displayController.js"
 
-export default function inputController(displayControl) {
+export default function inputController(displayControl, logicControl) {
+    const modal = document.getElementById('myModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
 
     (function addItemModalSetup(){
-        const modal = document.getElementById('myModal');
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-
         openBtn.addEventListener('click', () => {
             modal.showModal();
         });
@@ -18,7 +17,6 @@ export default function inputController(displayControl) {
     })();
     
     (function addItemPagePopup(){
-        const modal = document.getElementById('myModal');
         const addBtn = document.querySelector('.addBtn')
         addBtn.addEventListener('click', function (){
            // close when click outside of modal
@@ -33,12 +31,47 @@ export default function inputController(displayControl) {
                     modal.close();
                 }
             });
-
-
-            console.log('pressed')
             displayControl.renderAddItemPage()
+            addItemSubmit()
         })
     })();
+
+    function getCurrentTime(){
+        const now = new Date();
+        const today =
+            now.getFullYear() + "-" +
+            String(now.getMonth() + 1).padStart(2, "0") + "-" +
+            String(now.getDate()).padStart(2, "0");
+        return today
+    }
+
+
+    function addItemSubmit(){
+        const addItemForm = document.querySelector('.addItemForm')
+        addItemForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const itemName = addItemForm.name.value;
+            const itemCost = Number(addItemForm.cost.value);
+            const itemCategory = addItemForm.category.value;
+            const itemDescription = addItemForm.description.value;
+
+            let dateValue = '';
+            if (addItemForm.date.value == ''){
+                dateValue = getCurrentTime();
+            } else {
+                dateValue = addItemForm.date.value;
+            }
+            const itemDate = dateValue;
+
+
+            const itemPriority = addItemForm.priority.value;
+            logicControl.addItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+            addItemForm.reset();
+            modal.close();
+            logicControl.displayItem();
+        })
+        
+    };
 
 
 }

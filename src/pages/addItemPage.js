@@ -18,6 +18,7 @@ export default function addItemPage(){
 
     const form  = document.createElement('form');
     form.setAttribute('method', "get");
+    form.classList.add('addItemForm')
     page.appendChild(form)
 
     form.innerHTML += `
