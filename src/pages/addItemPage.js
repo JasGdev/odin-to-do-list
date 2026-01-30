@@ -42,8 +42,17 @@ export default function addItemPage(){
         <input type="date" name="date"/>
     </div>
     <div class="inputDiv">
-        <label for="name">Priority</label>
-        <input type="text" name="name" required />
+        <label for="priority">Priority</label>
+
+        <div class="radioContainer">
+            <input type="radio" id="high" name="priority" value="high">
+            <label for="html">High</label><br>
+            <input type="radio" id="medium" name="priority" value="medium">
+            <label for="css">Medium</label><br>
+            <input type="radio" id="low" name="priority" value="low">
+            <label for="javascript">Low</label>
+        </div>
+
     </div>
     <div class="form-submit">
     <input type="submit" value="Add item" />

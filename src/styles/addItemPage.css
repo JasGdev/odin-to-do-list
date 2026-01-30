@@ -1,0 +1,61 @@
+/* AddItemPage */
+
+.pageContainer.addItemPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page.addItemPage {
+    background-color: rgb(177, 177, 177);
+    height: fit-content;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.page.addItemPage form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.inputDiv {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content textarea,
+.content input {
+    width: 170px;
+}
+
+/* dialog popup */
+.modalDisplay {
+    display: flex;
+    flex-direction: column;
+
+}
+
+dialog {
+    border: none;
+    align-self: center;
+    justify-self: center;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.radioContainer{
+    display: flex;
+    gap: 5px;
+
+}

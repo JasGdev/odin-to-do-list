@@ -1,10 +1,13 @@
 // src/index.js
-import "./styles.css";
-import listItem from './items/listItem.js'
-import category from './items/category.js'
+import "./styles/styles.css";
+import "./styles/sidebar.css";
+import "./styles/addItemPage.css";
+
 import logicController from "./controllers/logicController.js";
 import displayController from './controllers/displayController.js'
 import inputController from "./controllers/inputController.js";
+
+
 
 // Input Controller calls the logic controller and display controller
 // Logic controller tells the display controller what to display

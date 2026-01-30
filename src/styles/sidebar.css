@@ -1,0 +1,54 @@
+/* Sidebar */
+.sidebar {
+    grid-column: 1/2;
+    background-color: white;
+    display: grid;
+    grid-template-rows: min-content auto;
+}
+
+/* Sidebar actions */
+.sidebar .actions {
+    grid-row: 1/2;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+
+}
+
+.sidebar button {
+    height: 40px;
+    width: 100%;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 4fr min-content;
+}
+
+.search input {
+    grid-column: 1/2;
+}
+
+.search button {
+    grid-column: 2/3;
+}
+
+.search button i {
+    font-size: 17px;
+    padding: 10px;
+}
+
+/* Sidebar categories */
+.sidebar .categories {
+    grid-row: 2/3;
+    background-color: rgb(0, 0, 0);
+}
+
+.categories .categoryLabel {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding-bottom: 10px;
+}
