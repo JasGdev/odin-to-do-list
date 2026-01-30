@@ -1,20 +1,20 @@
 export default function addItemPage(){
-    
-
-
-
     const content = document.querySelector('.content');
+    const modalContent = document.querySelector('.modalContent')
+
     content.innerHTML = '';
+    modalContent.innerHTML ='';
 
-    const modal = document.createElement('dialog');
+
+    
+    // const pageContainer = document.createElement('div');
+    // pageContainer.classList.add('pageContainer', 'addItemPage')
+    // content.appendChild(pageContainer)
 
 
-    const pageContainer = document.createElement('div');
-    pageContainer.classList.add('pageContainer', 'addItemPage')
-    content.appendChild(pageContainer)
     const page = document.createElement('div');
     page.classList.add('page','addItemPage');
-    pageContainer.appendChild(page);
+    modalContent.appendChild(page);
 
     const form  = document.createElement('form');
     form.setAttribute('method', "get");
@@ -42,48 +42,13 @@ export default function addItemPage(){
         <input type="date" name="date"/>
     </div>
     <div class="inputDiv">
-        <label for="name">Item name</label>
-        <input type="text" name="name" required />
-    </div>
-    <div class="inputDiv">
-        <label for="name">Item name</label>
-        <input type="text" name="name" required />
-    </div>
-    <div class="inputDiv">
-        <label for="name">Item name</label>
-        <input type="text" name="name" required />
-    </div>
-    <div class="inputDiv">
-        <label for="name">Item name</label>
+        <label for="name">Priority</label>
         <input type="text" name="name" required />
     </div>
     <div class="form-submit">
     <input type="submit" value="Add item" />
     </div>
-
-
-
-
     `;
-
-
-
-    // //name input
-    // const nameInputDiv = document.createElement('div');
-    // nameInputDiv.classList.add('inputDiv')
-
-    // const nameInputLabel = document.createElement('label');
-    // nameInputLabel.setAttribute('for', 'name')
-    // nameInputLabel.textContent = 'Item name'
-
-    // const nameInput = document.createElement('input');
-    // nameInput.setAttribute('type', "text");
-    // nameInput.setAttribute('name', "name");
-
-    // form.appendChild(nameInputDiv)
-    // nameInputDiv.appendChild(nameInputLabel)
-    // nameInputDiv.appendChild(nameInput)
-
 
 
 

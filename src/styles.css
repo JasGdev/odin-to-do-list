@@ -96,7 +96,7 @@ form {
 }
 
 .page.addItemPage{
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(177, 177, 177);
     height: 500px;
     width: 400px;
     display: flex;
@@ -120,5 +120,16 @@ form {
 
 .content textarea, .content input{
     width: 170px;
+}
+
+dialog{
+    border: none;
+    align-self: center;
+    justify-self: center;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
 }
 
