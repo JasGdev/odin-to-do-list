@@ -1,7 +1,12 @@
 export default class category {
-    constructor(name, item){
+    constructor(name) {
         this.nameOfCategory = name;
-        this.items = [item];
-        this.totalSpending = item.cost;
+        this.items = [];
+        this.totalSpending = 0;
+    }
+
+    addItem(item){
+        this.items.push(item);
+        this.totalSpending += item.cost;
     }
 }

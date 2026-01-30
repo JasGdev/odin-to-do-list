@@ -18,14 +18,12 @@ export default function controller(){
         // updates categoryList
         const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
         if (categoryFound) {
-            categoryFound.totalSpending += itemCost;
-            categoryFound.items.push(newItem)
+            categoryFound.addItem(newItem);
         } else {
-            const newCategory = new category(itemCategory, newItem);
+            const newCategory = new category(itemCategory);
+            newCategory.addItem(newItem)
             categoryList.push(newCategory)
         }
-
-
 
 
 
