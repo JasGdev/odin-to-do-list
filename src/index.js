@@ -18,6 +18,9 @@ const logicControl = logicController()
 const displayControl = displayController(logicControl)
 inputController(displayControl, logicControl)
 
+displayControl.renderItemListPage();
+
+
 
 // inputController(displayControl);
 

@@ -17,7 +17,6 @@ export default function inputController(displayControl, logicControl) {
     (function addItemPagePopup(){
         const addBtn = document.querySelector('.addBtn')
         addBtn.addEventListener('click', function (){
-           // close when click outside of modal
             modal.addEventListener('click', (e) => {
                 const dialogDimensions = modal.getBoundingClientRect();
                 if (
@@ -67,7 +66,6 @@ export default function inputController(displayControl, logicControl) {
             modal.close();
 
             // want to call the display controller here to REFRESH DISPLAY
-            logicControl.displayItem();
         })
         
     };

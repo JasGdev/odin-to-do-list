@@ -3,6 +3,5 @@
     height: 100%;
     display: grid;
     grid: repeat(auto-fill, 30px)/repeat(6, 4fr) 1fr ;
-    border: 1px black solid;
     gap: 1px;
 }

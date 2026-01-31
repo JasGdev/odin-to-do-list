@@ -1,3 +1,5 @@
+
+// gets called by renderItemListPage() in displayController
 export default function itemListPage(itemList) {
     const content = document.querySelector('.content');
     content.innerHTML = '';
@@ -5,24 +7,24 @@ export default function itemListPage(itemList) {
     const page = document.createElement('div');
     page.classList.add('page', 'itemListPage');
     content.appendChild(page);
+    console.log(itemList)
     
-    page.style.backgroundColor = 'red';
+    console.log(itemList)
+    for (const item of itemList){
+        console.log('A')
+        // createItemRow(item);
+    }
 
 
-
-
-    function createItemRow(item){
-
-        const fields = ['name', 'cost', 'category', 'description', 'date', 'priority'];
-
-        const divs = fields.map(field => {
-            const div = document.createElement('div');
-            div.textContent = item[field];
-            return div;
-        });
-
-        divs.forEach(div => container.appendChild(div));
-
+    function createItemRow(){
+        const page = document.querySelector('.page.itemListPage') 
+        const columns = ['name', 'cost', 'category', 'description', 'date', 'priority', 'X'];
+        for (const column of columns){
+            const colDiv = document.createElement('div');
+            colDiv.classList.add(column, 'itemLastPage');
+            colDiv.textContent = column;
+            page.appendChild(colDiv);
+        }
     // by feeding it a item it will create 7 divs (6 for item 1 for delete)
     // and add it to the page
     }
