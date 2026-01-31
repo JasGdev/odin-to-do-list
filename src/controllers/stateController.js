@@ -1,0 +1,62 @@
+import listItem from '../items/listItem.js'
+import category from '../items/category.js'
+import {
+  getItemList,
+  getCategoryList,
+  addItemToState,
+  removeItemFromState
+} from './stateController.js';
+
+let itemList = [];
+let categoryList = [];
+const tax = 0.08
+let totalSpending = 0;
+
+
+let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
+    const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+    getItemList.push(newItem)
+    const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
+    if (categoryFound) {
+        categoryFound.addItem(newItem);
+    } else {
+        const newCategory = new category(itemCategory);
+        newCategory.addItem(newItem)
+        categoryList.push(newCategory)
+    }
+    totalSpending += itemCost;       
+}
+
+let removeItem = (idToRemove) => {
+    const itemToRemove = itemList.find((item) => item.id == idToRemove)
+    console.log(itemToRemove)
+    totalSpending -= itemToRemove.cost
+    const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
+    categoryFound.removeItem(idToRemove, itemToRemove.cost)
+    itemList = itemList.filter((item) => item.id !== idToRemove);
+}
+
+let getItemList = () => {
+    return itemList
+}
+    
+
+
+// add additional information to a specific item
+
+// change information on items
+    
+// Temporary display item which will be implemented in UI later
+let displayItem = () => {
+    // displayController.
+    console.log(itemList);
+    console.log(categoryList);
+    console.log(`current spending is $${totalSpending}`)
+}
+
+export { addItem, displayItem, removeItem, getItemList,}
+
+
+
+
+

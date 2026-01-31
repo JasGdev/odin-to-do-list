@@ -18,3 +18,44 @@
 
 
 
+Index
+```bash
+# loads controllers
+import inputController from './controllers/inputController.js';
+import displayController from './controllers/displayController.js';
+
+inputController.init();
+displayController.render();
+```
+
+State Controller
+```bash
+# keeps the state values 
+let itemList = [];
+let categoryList = [];
+const tax = 0.08
+let totalSpending = 0;
+
+# offers methods to manipulate values
+function addItem()
+function removeItemById()
+function addCategory()
+function removeCategory()
+function getItemList()
+etc
+```
+
+
+Input Controller
+```bash
+# adds action listener that imports stateListener actions that manipulate the state values
+```
+
+Display Controller
+```bash
+# renders pages as needed imports getItemList/getCategory... from StateController to dictate what to display
+```
+
+
+
+

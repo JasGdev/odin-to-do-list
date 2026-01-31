@@ -1,17 +1,21 @@
 import addItemPage from '../pages/addItemPage.js'
 import itemListPage from '../pages/itemListPage.js';
 
-export default function displayController() {
-    function renderAddItemPage(){
-        addItemPage(); 
-    };
+import {
+  getItemList,
+  getCategoryList,
+} from './stateController.js';
 
-    function renderItemListPage(){
 
-    };
+function renderAddItemPage(){
+    addItemPage(); 
+};
 
-    // need a refresh display that detects current active display are reloads it
-    // by seeing what is teh class of the object inside content depending on that choosing which page to render again
+function renderItemListPage(){
 
-    return {renderAddItemPage, renderItemListPage}
-}
+};
+
+// need a refresh display that detects current active display are reloads it
+// by seeing what is teh class of the object inside content depending on that choosing which page to render again
+
+export {renderAddItemPage, renderItemListPage}
