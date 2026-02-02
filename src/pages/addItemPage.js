@@ -47,15 +47,7 @@ export default function addItemPage(){
     </div>
     <div class="inputDiv">
         <label for="priority">Priority</label>
-
-        <div class="radioContainer">
-            <input type="radio" id="high" name="priority" value="high">
-            <label for="html">High</label><br>
-            <input type="radio" id="medium" name="priority" value="medium">
-            <label for="css">Medium</label><br>
-            <input type="radio" id="low" name="priority" value="low">
-            <label for="javascript">Low</label>
-        </div>
+        <input type="number" name="priority" />
 
     </div>
     <div class="form-submit">

@@ -17,7 +17,7 @@ addItem(
     "Food",
     "Weekly supermarket run",
     "2026-02-02",
-    "Medium",
+    3,
     2
 );
 
@@ -27,8 +27,8 @@ addItem(
     "Entertainment",
     "Monthly streaming subscription",
     "2026-02-01",
-    "Low",
-    3
+    1,
+    1
 );
 
 addItem(
@@ -37,7 +37,7 @@ addItem(
     "Utilities",
     "January electricity payment",
     "2026-01-28",
-    "High",
+    2,
     1
 );
 
@@ -47,8 +47,8 @@ addItem(
     "Food",
     "Ramen near the office",
     "2026-02-02",
-    "Low",
-    7
+    1,
+    1
 );
 
 displayItem()

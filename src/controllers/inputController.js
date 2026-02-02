@@ -7,6 +7,7 @@ import {
 
 import { renderAddItemPage } from './displayController.js';
 import { getCurrentTime } from './utils.js'
+import itemListPage from '../pages/itemListPage.js';
 
 
 
@@ -99,11 +100,10 @@ function itemListInputs() {
     // and associated infoType in .dataset.infoType
     (function editInformation() {
         let page = document.querySelector('.page')
-        const dataCells = document.querySelectorAll('.itemListItem.editable')
+        const dataCells = document.querySelectorAll('.editable')
 
         dataCells.forEach((dataCell) => {
             dataCell.addEventListener('click', function () {
-                // console.log(`${dataCell.dataset.infoType} ${dataCell.dataset.itemID} `)
                 // create modal that pops up covering where dataCell is (darken everything else)
                 // clicking outside of modal cancels input
                 // clicking enter updates the value based on what is inside input
@@ -125,13 +125,35 @@ function itemListInputs() {
 
                 })
 
-                // sets position of modal according to dataCell
-                const dataCellPosition = dataCell.getBoundingClientRect()
-                valueDialog.style.position = 'fixed';
-                valueDialog.style.top = `${dataCellPosition.top}px`;
-                valueDialog.style.left = `${dataCellPosition.left}px`;
-                valueDialog.style.width = `${dataCellPosition.width - 1}px`;
-                valueDialog.style.height = `${dataCellPosition.height - 1}px`;
+                valueDialog.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter'){
+                        e.preventDefault();
+                        // call stateController to change the value into the current form value
+                            // changeItemPropertyById(Id, infoType, newValue)
+                        const itemId = dataCell.dataset.itemID; 
+                        const propertyToChange = dataCell.dataset.infoType;
+                        const newValue = document.querySelector('.itemListForm').formValue.value; 
+
+                        getItemById(itemId)[propertyToChange] = newValue;
+                        valueDialog.close();
+                        page.removeChild(valueDialog)
+                        itemListPage();
+                        displayItem();
+
+                        
+                    }
+                })
+
+
+                    const dataCellPosition = dataCell.getBoundingClientRect()
+                    valueDialog.style.position = 'fixed';
+                    valueDialog.style.top = `${dataCellPosition.top}px`;
+                    valueDialog.style.left = `${dataCellPosition.left}px`;
+                    valueDialog.style.width = `${dataCellPosition.width}px`;
+                    valueDialog.style.height = `${dataCellPosition.height}px`;
+
+                
+
 
                 let dataCellType = '';
                 // create form
@@ -146,7 +168,7 @@ function itemListInputs() {
                 } else if (dataCell.dataset.infoType == 'count') {
                     dataCellType = 'number';
                 } else if (dataCell.dataset.infoType == 'priority') {
-                    dataCellType = 'radio';
+                    dataCellType = 'number';
                 }
 
                 const currItem = getItemById(dataCell.dataset.itemID)
@@ -158,7 +180,7 @@ function itemListInputs() {
                     valueDialog.innerHTML = `<form class="itemListForm" method="get">
                     <div class="inputDiv">
                         <input class = "itemListInput ${dataCellType} notCount" type='${dataCellType}' 
-                        value = "${currItem[currInfoType]}" name="name" required />
+                        value = "${currItem[currInfoType]}" name="formValue" required />
                     </div>
                     </form>`;
                     const itemListInput = document.querySelector('.itemListInput');
