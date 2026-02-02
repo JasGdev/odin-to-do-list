@@ -1,36 +1,44 @@
+import { getItemList } from "../controllers/stateController.js";
 
-// gets called by renderItemListPage() in displayController
-export default function itemListPage(itemList) {
+export default function itemListPage() {
     const content = document.querySelector('.content');
     content.innerHTML = '';
 
     const page = document.createElement('div');
     page.classList.add('page', 'itemListPage');
     content.appendChild(page);
-    console.log(itemList)
     
-    console.log(itemList)
-    for (const item of itemList){
-        console.log('A')
-        // createItemRow(item);
+    createTopRow();
+    for (const item of getItemList()){
+        createItemRow(item);
     }
 
+    
+}
 
-    function createItemRow(){
-        const page = document.querySelector('.page.itemListPage') 
-        const columns = ['name', 'cost', 'category', 'description', 'date', 'priority', 'X'];
-        for (const column of columns){
-            const colDiv = document.createElement('div');
-            colDiv.classList.add(column, 'itemLastPage');
-            colDiv.textContent = column;
-            page.appendChild(colDiv);
-        }
-    // by feeding it a item it will create 7 divs (6 for item 1 for delete)
-    // and add it to the page
+
+function createItemRow(item) {
+    const page = document.querySelector('.page.itemListPage')
+    const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
+    for (const column of columns) {
+        const colDiv = document.createElement('div');
+        colDiv.classList.add('itemListItem', column, 'itemListCell');
+        if (column == 'X') { colDiv.textContent = 'X'; }
+        else { colDiv.textContent = item[column] }
+
+        page.appendChild(colDiv);
     }
+}
 
-
-
-
+function createTopRow() {
+    const page = document.querySelector('.page.itemListPage')
+    const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
+    for (const column of columns) {
+        const colDiv = document.createElement('div');
+        colDiv.classList.add('itemListCategory', column, 'itemListCell');
+        colDiv.textContent = column;
+        page.appendChild(colDiv);
+    }
 
 }
+

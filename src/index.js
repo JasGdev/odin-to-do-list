@@ -4,7 +4,46 @@ import "./styles/sidebar.css";
 import "./styles/addItemPage.css";
 import "./styles/itemListPage.css";
 
-import './controllers/displayController.js';
 import { initInput } from "./controllers/inputController.js";
+import { initDisplay } from "./controllers/displayController.js";
+import { addItem, displayItem } from "./controllers/stateController.js";
 
 initInput();
+initDisplay();
+
+addItem(
+    "Groceries",
+    45,
+    "Food",
+    "Weekly supermarket run",
+    "2026-02-02",
+    "Medium"
+);
+
+addItem(
+    "Netflix Subscription",
+    15,
+    "Entertainment",
+    "Monthly streaming subscription",
+    "2026-02-01",
+    "Low"
+);
+
+addItem(
+    "Electricity Bill",
+    120,
+    "Utilities",
+    "January electricity payment",
+    "2026-01-28",
+    "High"
+);
+
+addItem(
+    "Lunch with friends",
+    28,
+    "Food",
+    "Ramen near the office",
+    "2026-02-02",
+    "Low"
+);
+

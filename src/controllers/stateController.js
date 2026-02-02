@@ -1,5 +1,6 @@
 import listItem from '../items/listItem.js'
 import category from '../items/category.js'
+import itemListPage from '../pages/itemListPage.js';
 
 let itemList = [];
 let categoryList = [];
@@ -18,7 +19,9 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
         newCategory.addItem(newItem)
         categoryList.push(newCategory)
     }
-    totalSpending += itemCost;       
+    totalSpending += itemCost;   
+    displayItem();
+    itemListPage();    
 }
 
 let removeItem = (idToRemove) => {
