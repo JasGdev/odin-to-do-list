@@ -40,7 +40,6 @@ function addItemInputs(){
         });
     })();
 
-
     (function addItemPagePopup() {
         const addBtn = document.querySelector('.addBtn')
         addBtn.addEventListener('click', function () {
@@ -81,18 +80,68 @@ function addItemInputs(){
 
 
 function itemListInputs(){
-    // each button has associated id for item in .id
-    (function deleteItem() {
+    // each button has associated id for item in .dataset.itemID
+    (function deleteItemBtn() {
         const closeButtons = document.querySelectorAll('.closeBtn');
         closeButtons.forEach((button) => {
-            if (button.id !== 'topRowClose'){
+            if (button.dataset.itemID !== 'topRowClose'){
                 button.addEventListener('click', function () {
-                    removeItem(button.id);
+                    removeItem(button.dataset.itemID);
                 })
 
             }
         })
 
+    })();
+
+    // each cell has associated id for item in .dataset.itemID 
+    // and associated infoType in .dataset.infoType
+    (function editInformation(){
+        let page = document.querySelector('.page')
+        const dataCells = document.querySelectorAll('.itemListItem')
+        dataCells.forEach((dataCell) => {
+            dataCell.addEventListener('click', function () {
+                // console.log(`${dataCell.dataset.infoType} ${dataCell.dataset.itemID} `)
+                // create modal that pops up covering where dataCell is (darken everything else)
+                    // clicking outside of modal cancels input
+                    // clicking enter updates the value based on what is inside input
+                const valueDialog = document.createElement('dialog');
+                valueDialog.textContent = 'SS'
+                page.appendChild(valueDialog);
+                valueDialog.showModal();
+                valueDialog.addEventListener('click', (e) => {
+                    // if click outside of modal
+                    const dialogDimensions = valueDialog.getBoundingClientRect();
+                    if (
+                        e.clientX < dialogDimensions.left ||
+                        e.clientX > dialogDimensions.right ||
+                        e.clientY < dialogDimensions.top ||
+                        e.clientY > dialogDimensions.bottom
+                    ) {
+                        valueDialog.close();
+                    }
+                    
+                })
+
+                // sets position of modal according to dataCell
+                const dataCellPosition = dataCell.getBoundingClientRect()  
+                valueDialog.style.position = 'fixed';
+                valueDialog.style.top = `${dataCellPosition.top}px`;
+                valueDialog.style.left = `${dataCellPosition.left}px`;
+                valueDialog.style.width = `${dataCellPosition.width-1}px`;
+                valueDialog.style.height = `${dataCellPosition.height-1}px`;
+
+                // create form
+                valueDialog.innerHTML = `<form class="itemListForm" method="get">
+                    <div class="inputDiv">
+                        <input class = "itemListInput" type="text" name="name" required />
+                    </div>
+                </form>`;
+                const itemListInput = document.querySelector('.itemListInput');
+                itemListInput.focus();
+            })
+
+        })
     })();
 
 
