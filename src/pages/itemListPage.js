@@ -1,7 +1,8 @@
     import { itemListInputs } from "../controllers/inputController.js";
     import { getItemList } from "../controllers/stateController.js";
 
-    const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
+    const columns = ['date', 'name', 'cost', 'count' , 'total', 'category', 'description', 'priority', 'X'];
+    const currency = '¥';
 
     export default function itemListPage() {
         const content = document.querySelector('.content');
@@ -30,12 +31,19 @@
             if (column == 'X') { 
                 createCloseButton(colDiv, item.id) 
                 colDiv.classList.add('itemListCell')
-            }
+            } 
             else { 
-                colDiv.textContent = item[column] 
+                if (column == 'cost' || column == 'total'){
+                    colDiv.textContent = currency + item[column] 
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'number');
+                } else {
+                    colDiv.textContent = item[column] 
+                    colDiv.classList.add('itemListItem', 'itemListCell');
+                }
+                
                 colDiv.dataset.itemID = item.id;
                 colDiv.dataset.infoType = column;
-                colDiv.classList.add('itemListItem', 'itemListCell');
+                
             }
             page.appendChild(colDiv);
         }

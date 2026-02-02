@@ -8,8 +8,8 @@ const tax = 0.08
 let totalSpending = 0;
 
 
-let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
-    const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount) => {
+    const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount);
     itemList.push(newItem)
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
     if (categoryFound) {

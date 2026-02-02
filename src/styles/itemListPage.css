@@ -3,7 +3,7 @@
     background-color: rgb(151, 151, 151);
     display: grid;
     grid-auto-rows: 25px;
-    grid-template-columns: minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 1fr) 
+    grid-template-columns: minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr)
     minmax(min-content, 3fr) minmax(min-content, 6fr) minmax(min-content, 2fr) 25px ;
 
 
@@ -19,7 +19,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.itemListCell.number {
+    justify-content: end;
+    padding-right: 10px;
 }
 .itemListItem:hover{
     background-color:rgb(190, 190, 190);

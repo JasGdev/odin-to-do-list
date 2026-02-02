@@ -30,6 +30,10 @@ export default function addItemPage(){
         <input type="number" name="cost" required />
     </div>
     <div class="inputDiv">
+        <label for="cost">Count</label>
+        <input type="number" name="count" required />
+    </div>
+    <div class="inputDiv">
         <label for="category">Category</label>
         <input type="text" name="category" required />
     </div>
