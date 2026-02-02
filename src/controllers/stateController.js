@@ -1,11 +1,5 @@
 import listItem from '../items/listItem.js'
 import category from '../items/category.js'
-import {
-  getItemList,
-  getCategoryList,
-  addItemToState,
-  removeItemFromState
-} from './stateController.js';
 
 let itemList = [];
 let categoryList = [];
@@ -15,7 +9,7 @@ let totalSpending = 0;
 
 let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,) => {
     const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
-    getItemList.push(newItem)
+    itemList.push(newItem)
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemCategory);
     if (categoryFound) {
         categoryFound.addItem(newItem);
@@ -49,8 +43,8 @@ let getItemList = () => {
 // Temporary display item which will be implemented in UI later
 let displayItem = () => {
     // displayController.
-    console.log(itemList);
-    console.log(categoryList);
+    console.table(itemList);
+    console.table(categoryList);
     console.log(`current spending is $${totalSpending}`)
 }
 
