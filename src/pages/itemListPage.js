@@ -33,12 +33,20 @@
                 colDiv.classList.add('itemListCell')
             } 
             else { 
-                if (column == 'cost' || column == 'total'){
+                if (column == 'cost'){
                     colDiv.textContent = currency + item[column] 
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
+                } else if (column == 'total'){
+                    colDiv.textContent = currency + item['cost'] * item['count']
                     colDiv.classList.add('itemListItem', 'itemListCell', 'number');
-                } else {
-                    colDiv.textContent = item[column] 
-                    colDiv.classList.add('itemListItem', 'itemListCell');
+                } else if (column == 'count'){
+                    colDiv.textContent = item[column]
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
+                }
+                
+                else {
+                    colDiv.textContent = item[column]
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'editable');
                 }
                 
                 colDiv.dataset.itemID = item.id;

@@ -99,7 +99,7 @@ function itemListInputs(){
     // and associated infoType in .dataset.infoType
     (function editInformation(){
         let page = document.querySelector('.page')
-        const dataCells = document.querySelectorAll('.itemListItem')
+        const dataCells = document.querySelectorAll('.itemListItem.editable')
         dataCells.forEach((dataCell) => {
             dataCell.addEventListener('click', function () {
                 // console.log(`${dataCell.dataset.infoType} ${dataCell.dataset.itemID} `)
@@ -142,28 +142,38 @@ function itemListInputs(){
                     dataCellType = 'date';
                 } else if (dataCell.dataset.infoType == 'cost') {
                     dataCellType = 'number';
+                } else if (dataCell.dataset.infoType == 'count') {
+                    dataCellType = 'number';
                 } else if (dataCell.dataset.infoType == 'priority') {
                     dataCellType = 'radio';
+                } else if (dataCell.dataset.infoType == 'total'){
+                    dataCellType = 'none';
                 }
                 
                 const currItem = getItemById(dataCell.dataset.itemID)
                 const currInfoType = dataCell.dataset.infoType;
           
 
-
-                valueDialog.innerHTML = `<form class="itemListForm" method="get">
+                // special case for total which has no input and count which will have add and reduce button in addition to text selector
+                if (dataCellType === 'text' || dataCellType === 'date' || dataCellType === 'number' || dataCellType === 'radio'){
+                    valueDialog.innerHTML = `<form class="itemListForm" method="get">
                     <div class="inputDiv">
                         <input class = "itemListInput ${dataCellType}" type='${dataCellType}' 
                         value = "${currItem[currInfoType]}" name="name" required />
                     </div>
                     </form>`;
+                    const itemListInput = document.querySelector('.itemListInput');
+                    itemListInput.focus();
+                    itemListInput.select();
+                    if (dataCellType == 'date') {
+                        itemListInput.showPicker();
+                    }
+                } else if (dataCellType === 'total'){
                     
-                const itemListInput = document.querySelector('.itemListInput');
-                itemListInput.focus();
-                itemListInput.select();
-                if (dataCellType == 'date'){
-                    itemListInput.showPicker();
                 }
+                
+                    
+                
             })
 
         })

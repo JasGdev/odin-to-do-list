@@ -85,4 +85,8 @@
     text-align: center;
 }
 
+.page.itemListPage dialog form .number {
+    text-align: end;
+}
+
 
