@@ -14,12 +14,12 @@ const modal = document.getElementById('myModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
 
-function initInput(){
+function initInput() {
     addItemInputs();
 }
 
 
-function addItemInputs(){
+function addItemInputs() {
 
     (function addItemModalSetup() {
         openBtn.addEventListener('click', () => {
@@ -80,12 +80,12 @@ function addItemInputs(){
 }
 
 
-function itemListInputs(){
+function itemListInputs() {
     // each button has associated id for item in .dataset.itemID
     (function deleteItemBtn() {
         const closeButtons = document.querySelectorAll('.closeBtn');
         closeButtons.forEach((button) => {
-            if (button.dataset.itemID !== 'topRowClose'){
+            if (button.dataset.itemID !== 'topRowClose') {
                 button.addEventListener('click', function () {
                     removeItem(button.dataset.itemID);
                 })
@@ -97,15 +97,16 @@ function itemListInputs(){
 
     // each cell has associated id for item in .dataset.itemID 
     // and associated infoType in .dataset.infoType
-    (function editInformation(){
+    (function editInformation() {
         let page = document.querySelector('.page')
         const dataCells = document.querySelectorAll('.itemListItem.editable')
+
         dataCells.forEach((dataCell) => {
             dataCell.addEventListener('click', function () {
                 // console.log(`${dataCell.dataset.infoType} ${dataCell.dataset.itemID} `)
                 // create modal that pops up covering where dataCell is (darken everything else)
-                    // clicking outside of modal cancels input
-                    // clicking enter updates the value based on what is inside input
+                // clicking outside of modal cancels input
+                // clicking enter updates the value based on what is inside input
                 const valueDialog = document.createElement('dialog');
                 page.appendChild(valueDialog);
                 valueDialog.showModal();
@@ -121,24 +122,24 @@ function itemListInputs(){
                         valueDialog.close();
                         page.removeChild(valueDialog)
                     }
-                    
+
                 })
 
                 // sets position of modal according to dataCell
-                const dataCellPosition = dataCell.getBoundingClientRect()  
+                const dataCellPosition = dataCell.getBoundingClientRect()
                 valueDialog.style.position = 'fixed';
                 valueDialog.style.top = `${dataCellPosition.top}px`;
                 valueDialog.style.left = `${dataCellPosition.left}px`;
-                valueDialog.style.width = `${dataCellPosition.width-1}px`;
-                valueDialog.style.height = `${dataCellPosition.height-1}px`;
+                valueDialog.style.width = `${dataCellPosition.width - 1}px`;
+                valueDialog.style.height = `${dataCellPosition.height - 1}px`;
 
                 let dataCellType = '';
                 // create form
-                if (dataCell.dataset.infoType == 'name' || 
-                    dataCell.dataset.infoType == 'category' || 
-                    dataCell.dataset.infoType == 'description'){
-                    dataCellType = 'text';  
-                } else if (dataCell.dataset.infoType == 'date'){
+                if (dataCell.dataset.infoType == 'name' ||
+                    dataCell.dataset.infoType == 'category' ||
+                    dataCell.dataset.infoType == 'description') {
+                    dataCellType = 'text';
+                } else if (dataCell.dataset.infoType == 'date') {
                     dataCellType = 'date';
                 } else if (dataCell.dataset.infoType == 'cost') {
                     dataCellType = 'number';
@@ -146,19 +147,17 @@ function itemListInputs(){
                     dataCellType = 'number';
                 } else if (dataCell.dataset.infoType == 'priority') {
                     dataCellType = 'radio';
-                } else if (dataCell.dataset.infoType == 'total'){
-                    dataCellType = 'none';
                 }
-                
+
                 const currItem = getItemById(dataCell.dataset.itemID)
                 const currInfoType = dataCell.dataset.infoType;
-          
 
-                // special case for total which has no input and count which will have add and reduce button in addition to text selector
-                if (dataCellType === 'text' || dataCellType === 'date' || dataCellType === 'number' || dataCellType === 'radio'){
+
+                // count will have add and reduce button in addition to text selector
+                if (dataCellType === 'text' || dataCellType === 'date' || dataCellType === 'number' || dataCellType === 'radio') {
                     valueDialog.innerHTML = `<form class="itemListForm" method="get">
                     <div class="inputDiv">
-                        <input class = "itemListInput ${dataCellType}" type='${dataCellType}' 
+                        <input class = "itemListInput ${dataCellType} notCount" type='${dataCellType}' 
                         value = "${currItem[currInfoType]}" name="name" required />
                     </div>
                     </form>`;
@@ -168,12 +167,9 @@ function itemListInputs(){
                     if (dataCellType == 'date') {
                         itemListInput.showPicker();
                     }
-                } else if (dataCellType === 'total'){
-                    
-                }
-                
-                    
-                
+                } 
+
+
             })
 
         })
@@ -184,4 +180,4 @@ function itemListInputs(){
 
 
 
-export {initInput, itemListInputs}
+export { initInput, itemListInputs }

@@ -76,6 +76,7 @@
     height: 100%;
 }
 
+/* for normal modal */
 .page.itemListPage dialog form input{
     width: 100%;
     height: 100%;
@@ -85,8 +86,17 @@
     text-align: center;
 }
 
-.page.itemListPage dialog form .number {
+.page.itemListPage dialog form input.number {
     text-align: end;
 }
 
+/* for count modal */
 
+.countContainer {
+    display: flex;
+}
+
+.decreaseCountBtn, .increaseCountBtn{
+    height: 100%;
+    width: 30px;
+}

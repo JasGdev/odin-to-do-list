@@ -38,12 +38,33 @@
                     colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
                 } else if (column == 'total'){
                     colDiv.textContent = currency + item['cost'] * item['count']
-                    colDiv.classList.add('itemListItem', 'itemListCell', 'number');
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'total');
                 } else if (column == 'count'){
-                    colDiv.textContent = item[column]
-                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
+                    const countContainer = document.createElement('div')
+                    countContainer.classList.add('countContainer')
+
+                    const increaseCountBtn = document.createElement('button')
+                    increaseCountBtn.classList.add('increaseCountBtn')
+                    increaseCountBtn.textContent = '+'
+
+                    const countDiv = document.createElement('div')
+                    countDiv.classList.add('countDiv')
+                    countDiv.textContent = 423;
+
+                    const decreaseCountBtn = document.createElement('button')
+                    decreaseCountBtn.classList.add('decreaseCountBtn')
+                    decreaseCountBtn.textContent = '-'
+
+                    countContainer.appendChild(increaseCountBtn);
+                    countContainer.appendChild(decreaseCountBtn);
+                    countContainer.appendChild(countDiv);
+                    
+
+                    colDiv.appendChild(countContainer)
+    
+                    // colDiv.textContent = item[column]
+                    // colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
                 }
-                
                 else {
                     colDiv.textContent = item[column]
                     colDiv.classList.add('itemListItem', 'itemListCell', 'editable');
