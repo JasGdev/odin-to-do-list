@@ -33,7 +33,8 @@
 
 .content textarea,
 .content input {
-    width: 170px;
+    width: 300px;
+
 }
 
 /* dialog popup */

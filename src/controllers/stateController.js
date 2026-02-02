@@ -35,6 +35,10 @@ let removeItem = (idToRemove) => {
 let getItemList = () => {
     return itemList
 }
+
+let getItemById = (itemId) => {
+    return itemList.find((item) => item.id === itemId)
+}
     
 
 
@@ -44,13 +48,13 @@ let getItemList = () => {
     
 // Temporary display item which will be implemented in UI later
 let displayItem = () => {
-    // displayController.
+
     console.table(itemList);
-    console.table(categoryList);
-    console.log(`current spending is $${totalSpending}`)
+    // console.table(categoryList);
+    // console.log(`current spending is $${totalSpending}`)
 }
 
-export { addItem, displayItem, removeItem, getItemList,}
+export { addItem, displayItem, removeItem, getItemList, getItemById}
 
 
 

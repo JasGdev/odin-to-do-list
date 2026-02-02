@@ -26,15 +26,16 @@
         const page = document.querySelector('.page.itemListPage')
         for (const column of columns) {
             const colDiv = document.createElement('div');
-            colDiv.classList.add('itemListItem', 'itemListCell');
             colDiv.valueType = column;
             if (column == 'X') { 
                 createCloseButton(colDiv, item.id) 
+                colDiv.classList.add('itemListCell')
             }
             else { 
                 colDiv.textContent = item[column] 
                 colDiv.dataset.itemID = item.id;
                 colDiv.dataset.infoType = column;
+                colDiv.classList.add('itemListItem', 'itemListCell');
             }
             page.appendChild(colDiv);
         }

@@ -1,6 +1,7 @@
 import {
     addItem,
     displayItem,
+    getItemById,
     removeItem
 } from './stateController.js';
 
@@ -106,7 +107,6 @@ function itemListInputs(){
                     // clicking outside of modal cancels input
                     // clicking enter updates the value based on what is inside input
                 const valueDialog = document.createElement('dialog');
-                valueDialog.textContent = 'SS'
                 page.appendChild(valueDialog);
                 valueDialog.showModal();
                 valueDialog.addEventListener('click', (e) => {
@@ -119,6 +119,7 @@ function itemListInputs(){
                         e.clientY > dialogDimensions.bottom
                     ) {
                         valueDialog.close();
+                        page.removeChild(valueDialog)
                     }
                     
                 })
@@ -131,14 +132,38 @@ function itemListInputs(){
                 valueDialog.style.width = `${dataCellPosition.width-1}px`;
                 valueDialog.style.height = `${dataCellPosition.height-1}px`;
 
+                let dataCellType = '';
                 // create form
+                if (dataCell.dataset.infoType == 'name' || 
+                    dataCell.dataset.infoType == 'category' || 
+                    dataCell.dataset.infoType == 'description'){
+                    dataCellType = 'text';  
+                } else if (dataCell.dataset.infoType == 'date'){
+                    dataCellType = 'date';
+                } else if (dataCell.dataset.infoType == 'cost') {
+                    dataCellType = 'number';
+                } else if (dataCell.dataset.infoType == 'priority') {
+                    dataCellType = 'radio';
+                }
+                
+                const currItem = getItemById(dataCell.dataset.itemID)
+                const currInfoType = dataCell.dataset.infoType;
+          
+
+
                 valueDialog.innerHTML = `<form class="itemListForm" method="get">
                     <div class="inputDiv">
-                        <input class = "itemListInput" type="text" name="name" required />
+                        <input class = "itemListInput ${dataCellType}" type='${dataCellType}' 
+                        value = "${currItem[currInfoType]}" name="name" required />
                     </div>
-                </form>`;
+                    </form>`;
+                    
                 const itemListInput = document.querySelector('.itemListInput');
                 itemListInput.focus();
+                itemListInput.select();
+                if (dataCellType == 'date'){
+                    itemListInput.showPicker();
+                }
             })
 
         })
