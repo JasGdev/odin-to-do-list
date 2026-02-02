@@ -1,4 +1,7 @@
+import { itemListInputs } from "../controllers/inputController.js";
 import { getItemList } from "../controllers/stateController.js";
+
+const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
 
 export default function itemListPage() {
     const content = document.querySelector('.content');
@@ -13,17 +16,20 @@ export default function itemListPage() {
         createItemRow(item);
     }
 
+    itemListInputs();
+
     
 }
 
 
 function createItemRow(item) {
     const page = document.querySelector('.page.itemListPage')
-    const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
     for (const column of columns) {
         const colDiv = document.createElement('div');
         colDiv.classList.add('itemListItem', column, 'itemListCell');
-        if (column == 'X') { colDiv.textContent = 'X'; }
+        if (column == 'X') { 
+            createCloseButton(colDiv, item.id) 
+        }
         else { colDiv.textContent = item[column] }
 
         page.appendChild(colDiv);
@@ -32,13 +38,23 @@ function createItemRow(item) {
 
 function createTopRow() {
     const page = document.querySelector('.page.itemListPage')
-    const columns = ['date', 'name', 'cost', 'category', 'description', 'priority', 'X'];
     for (const column of columns) {
         const colDiv = document.createElement('div');
         colDiv.classList.add('itemListCategory', column, 'itemListCell');
-        colDiv.textContent = column;
+        if (column == 'X') { 
+            createCloseButton(colDiv, 'topRowClose') 
+        }
+        else { colDiv.textContent = column.charAt(0).toUpperCase() + column.substring(1) }
         page.appendChild(colDiv);
     }
 
+}
+
+function createCloseButton(colDiv, itemId) {
+    const closeBtn = document.createElement('button');
+    closeBtn.classList.add('closeBtn');
+    closeBtn.id = itemId;
+    closeBtn.textContent = '✕';
+    colDiv.appendChild(closeBtn)
 }
 

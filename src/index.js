@@ -4,7 +4,7 @@ import "./styles/sidebar.css";
 import "./styles/addItemPage.css";
 import "./styles/itemListPage.css";
 
-import { initInput } from "./controllers/inputController.js";
+import { initInput, itemListInputs } from "./controllers/inputController.js";
 import { initDisplay } from "./controllers/displayController.js";
 import { addItem, displayItem } from "./controllers/stateController.js";
 
@@ -46,4 +46,5 @@ addItem(
     "2026-02-02",
     "Low"
 );
+
 

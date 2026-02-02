@@ -20,17 +20,16 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
         categoryList.push(newCategory)
     }
     totalSpending += itemCost;   
-    displayItem();
     itemListPage();    
 }
 
 let removeItem = (idToRemove) => {
     const itemToRemove = itemList.find((item) => item.id == idToRemove)
-    console.log(itemToRemove)
     totalSpending -= itemToRemove.cost
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove, itemToRemove.cost)
     itemList = itemList.filter((item) => item.id !== idToRemove);
+    itemListPage();
 }
 
 let getItemList = () => {

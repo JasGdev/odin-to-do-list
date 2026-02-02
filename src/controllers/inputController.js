@@ -1,6 +1,7 @@
 import {
     addItem,
-    displayItem
+    displayItem,
+    removeItem
 } from './stateController.js';
 
 import { renderAddItemPage } from './displayController.js';
@@ -13,11 +14,11 @@ const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
 
 function initInput(){
-    addItemInput();
+    addItemInputs();
 }
 
 
-function addItemInput(){
+function addItemInputs(){
 
     (function addItemModalSetup() {
         openBtn.addEventListener('click', () => {
@@ -73,9 +74,30 @@ function addItemInput(){
             modal.close();
             // want to call the display controller here to REFRESH DISPLAY
         })
+
+
     };
 }
 
 
+function itemListInputs(){
+    // each button has associated id for item in .id
+    (function deleteItem() {
+        const closeButtons = document.querySelectorAll('.closeBtn');
+        closeButtons.forEach((button) => {
+            if (button.id !== 'topRowClose'){
+                button.addEventListener('click', function () {
+                    removeItem(button.id);
+                })
 
-export {initInput}
+            }
+        })
+
+    })();
+
+
+}
+
+
+
+export {initInput, itemListInputs}
