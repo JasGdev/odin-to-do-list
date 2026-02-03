@@ -10,6 +10,7 @@ import {
     resetCategoryToHide,
     setCategoryToColor,
     setEndMonth,
+    setSearchFilter,
     setSortingMode,
     setStartMonth
 } from './stateController.js';
@@ -27,6 +28,7 @@ const closeBtn = document.getElementById('closeModalBtn');
 function initInput() {
     addItemInputs();
     sortByMonthInputs();
+    sortBySearch();
 }
 
 
@@ -357,17 +359,23 @@ function sortByMonthInputs() {
     startMonth.addEventListener('change', () => {
         setStartMonth(startMonth.value)
         renderPage();
-        console.log(startMonth.value)
     } )
 
     endMonth.addEventListener('change', () => {
         setEndMonth(endMonth.value)
         renderPage();
-        console.log(endMonth.value)
     } )
     
 }
 
+function sortBySearch() {
+    const search = document.querySelector('input[name="search"]');
+    search.addEventListener('input', () => {
+        setSearchFilter(search.value)
+        console.log(search.value)
+        renderPage();
+    } )
+}
 
 
 export { initInput, itemListInputs, categoryInputs, getSortingMode, sortByInputs}

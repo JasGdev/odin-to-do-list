@@ -9,6 +9,7 @@ let sortingMode = 'default';
 let categoryToHide = [];
 let startMonth = '';
 let endMonth = '';
+let searchFilter = '';
 
 
 
@@ -50,7 +51,6 @@ let getItemList = () => {
     })
 
     // month filter 
-
     // if only start month is chosen (display only items in that month)
     // if both are chosen (display items from star to end month)
     // if only end month are chose (display items until end month)
@@ -62,7 +62,22 @@ let getItemList = () => {
         itemListToReturn = itemListToReturn.filter(item => item.date.slice(0, 7) <= endMonth)
     }
 
-    console.log(sortingMode)
+    // search filter
+    if (searchFilter !== ''){
+        itemListToReturn = itemListToReturn.filter(item => 
+            item.name.toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.cost.toString().toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.count.toString().toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.category.toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.date.toString().toLowerCase().includes(searchFilter.toLowerCase()) ||
+            item.priority.toString().toLowerCase().includes(searchFilter.toLowerCase()) 
+        )
+    }
+
+
+
+    // sorting depending on sorting mode
     switch (sortingMode) {
         case 'default':
             return itemListToReturn
@@ -163,10 +178,14 @@ let displayItem = () => {
     // console.log(`current spending is $${totalSpending}`)
 }
 
+let setSearchFilter = (searchValue) => {
+    searchFilter = searchValue;
+}
+
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
-    setSortingMode, setEndMonth, setStartMonth}
+    setSortingMode, setEndMonth, setStartMonth, setSearchFilter}
 
 
 
