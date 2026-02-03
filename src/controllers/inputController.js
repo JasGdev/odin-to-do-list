@@ -9,7 +9,9 @@ import {
     removeItem,
     resetCategoryToHide,
     setCategoryToColor,
-    setSortingMode
+    setEndMonth,
+    setSortingMode,
+    setStartMonth
 } from './stateController.js';
 
 import { renderAddItemPage, renderItemListPage } from './displayController.js';
@@ -351,14 +353,16 @@ function sortByMonthInputs() {
     const startMonth = document.querySelector('input[name="startMonthSelect"]');
     const endMonth = document.querySelector('input[name="endMonthSelect"]');
 
-    // if only start month is chosen (display only items in that month)
-    // if both are chosen (display items from star to end month)
-    // if only end month are chose (display items until end month)
+
     startMonth.addEventListener('change', () => {
+        setStartMonth(startMonth.value)
+        renderPage();
         console.log(startMonth.value)
     } )
 
     endMonth.addEventListener('change', () => {
+        setEndMonth(endMonth.value)
+        renderPage();
         console.log(endMonth.value)
     } )
     

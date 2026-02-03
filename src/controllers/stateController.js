@@ -7,6 +7,8 @@ let categoryList = [];
 const tax = 0.08
 let sortingMode = 'default';
 let categoryToHide = [];
+let startMonth = '';
+let endMonth = '';
 
 
 
@@ -47,6 +49,18 @@ let getItemList = () => {
         itemListToReturn = itemListToReturn.filter(item => item.category !== category)
     })
 
+    // month filter 
+
+    // if only start month is chosen (display only items in that month)
+    // if both are chosen (display items from star to end month)
+    // if only end month are chose (display items until end month)
+    if (startMonth !== '' && endMonth == '') {
+        itemListToReturn = itemListToReturn.filter(item => item.date.slice(0, 7) == startMonth)
+    } else if (startMonth !== '' && endMonth !== ''){
+        itemListToReturn = itemListToReturn.filter(item => (item.date.slice(0, 7) >= startMonth &&  item.date.slice(0, 7) <= endMonth))
+    } else if (startMonth == '' && endMonth !== ''){
+        itemListToReturn = itemListToReturn.filter(item => item.date.slice(0, 7) <= endMonth)
+    }
 
     console.log(sortingMode)
     switch (sortingMode) {
@@ -133,11 +147,14 @@ let setCategoryToColor = (category, color) => {
     foundCategory.color = color;
 }
 
+let setStartMonth = (month) => {
+    startMonth = month;
+}
 
-// add additional information to a specific item
+let setEndMonth = (month) => {
+    endMonth = month;
+}
 
-// change information on items
-    
 // Temporary display item which will be implemented in UI later
 let displayItem = () => {
 
@@ -149,7 +166,7 @@ let displayItem = () => {
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
-    setSortingMode}
+    setSortingMode, setEndMonth, setStartMonth}
 
 
 
