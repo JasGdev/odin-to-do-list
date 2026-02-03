@@ -8,7 +8,8 @@ import {
     removeCategoryToHide,
     removeItem,
     resetCategoryToHide,
-    setCategoryToColor
+    setCategoryToColor,
+    setSortingMode
 } from './stateController.js';
 
 import { renderAddItemPage, renderItemListPage } from './displayController.js';
@@ -23,7 +24,6 @@ const closeBtn = document.getElementById('closeModalBtn');
 
 function initInput() {
     addItemInputs();
-    // sortByInputs();
 }
 
 
@@ -302,11 +302,30 @@ function categoryInputs() {
     
 }
 
-// function sortByInputs() {
+let sortingMode = '';
+
+function sortByInputs() {
+    
+    const sortableDivs = document.querySelectorAll('.sortable')
+    sortableDivs.forEach((sortableDiv) => {
+        sortableDiv.addEventListener('click', function(){
+
+            // update sorting mode in stateController
+            sortingMode = sortableDiv.textContent.toLowerCase();
+            console.log(sortingMode)
+            setSortingMode(sortingMode)
+            renderPage()
+
+        })
+    })
     
 
-// }
+}
+
+function getSortingMode() {
+    return sortingMode
+}
 
 
 
-export { initInput, itemListInputs, categoryInputs}
+export { initInput, itemListInputs, categoryInputs, getSortingMode, sortByInputs}

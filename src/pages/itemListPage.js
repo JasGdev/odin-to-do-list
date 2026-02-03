@@ -1,4 +1,4 @@
-    import { itemListInputs } from "../controllers/inputController.js";
+    import { getSortingMode, itemListInputs, sortByInputs } from "../controllers/inputController.js";
     import { getCategoryColor, getItemList } from "../controllers/stateController.js";
 import { getTextColor } from "../controllers/utils.js";
 
@@ -19,6 +19,7 @@ import { getTextColor } from "../controllers/utils.js";
         }
 
         itemListInputs();
+        sortByInputs();
 
         
     }
@@ -102,11 +103,17 @@ import { getTextColor } from "../controllers/utils.js";
     }
 
     function createTopRow() {
+        
         const page = document.querySelector('.page.itemListPage')
         for (const column of columns) {
+
             const colDiv = document.createElement('div');
+            if (getSortingMode() == column) {
+                colDiv.style.backgroundColor = 'black';
+                colDiv.style.color = 'white';
+            }
             colDiv.classList.add('itemListCategory', 'itemListCell');
-            if (['date', 'name', 'cost', 'count', 'total', 'category'].includes(column)){
+            if (['date', 'name', 'cost', 'count', 'total', 'category', 'sortable', 'priority'].includes(column)){
                 colDiv.classList.add('sortable')
             }
             if (column == 'X') { 

@@ -33,25 +33,46 @@ let removeItem = (idToRemove) => {
     renderPage();
 }
 
+const sortByPriority = (arr) => {
+    arr.sort((a, b) => a.priority - b.priority);
+}
+
 let getItemList = () => {
     let itemListToReturn = itemList.slice();
     // default sort by priority
-    itemListToReturn.sort((a, b) => a.priority - b.priority);
+    sortByPriority(itemListToReturn);
     
     // category filter
     categoryToHide.forEach((category) => {
         itemListToReturn = itemListToReturn.filter(item => item.category !== category)
     })
 
-
-
-
-    if (sortingMode == 'default'){
-        return itemListToReturn
+    switch (sortingMode) {
+        case 'default':
+            return itemListToReturn
+        case 'date':
+            return itemListToReturn
+        case 'name':
+            return itemListToReturn
+        case 'cost':
+            return itemListToReturn
+        case 'count':
+            return itemListToReturn
+        case 'total':
+            return itemListToReturn
+        case 'category':
+            return itemListToReturn
+        case 'priority':
+            return itemListToReturn
     }
 
     
 }
+
+let setSortingMode = (mode) => {
+    sortingMode = mode;
+}
+
 
 let getItemById = (itemId) => {
     return itemList.find((item) => item.id === itemId)
@@ -111,7 +132,8 @@ let displayItem = () => {
 
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
-    getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor}
+    getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
+    setSortingMode}
 
 
 
