@@ -52,3 +52,33 @@ form {
     color: white;
     padding-bottom: 10px;
 }
+
+/* Month Select */
+.MonthSelect {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.MonthSelect form{
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+}
+
+.MonthSelect label {
+    background-color: rgb(182, 182, 182);
+    padding: 0px 10px;
+    width: 100%;
+    /* font-size: 12px; */
+    align-items: center;
+}
+
+.MonthSelect input{
+    height: 100%;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    /* width: 90%; */
+    /* font-size: 12px; */
+    
+}
