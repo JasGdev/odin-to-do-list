@@ -3,6 +3,7 @@ import {
     addItem,
     categoryToHideAll,
     displayItem,
+    getCategoryList,
     getItemById,
     removeCategoryToHide,
     removeItem,
@@ -250,6 +251,8 @@ function categoryInputs() {
             } else if (checkBox.checked == true){
                 removeCategoryToHide(checkBox.value);
             }
+            console.log(getCategoryList())
+            
             renderPage();
             
         })
@@ -265,6 +268,7 @@ function categoryInputs() {
 
     categoryHideAllBtn.addEventListener('click', function(){
         categoryToHideAll();
+        
         renderPage();
     })
 

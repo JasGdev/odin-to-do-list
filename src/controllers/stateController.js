@@ -49,6 +49,7 @@ let getItemById = (itemId) => {
 }
 
 let getCategoryList = () => {
+    categoryList = categoryList.filter(category => category.items.length > 0);
     return categoryList
 }
 
