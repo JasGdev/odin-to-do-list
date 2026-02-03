@@ -8,5 +8,37 @@
 .categoryName {
     color: white;
     background-color: rgb(143, 143, 143);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 5px;
+}
 
+.categoryShow{
+    transform: scale(1.5);
+    
+}
+
+.categoryBtnContainer{
+    display: flex;
+    gap: 1px;
+    height: 30px;
+    justify-content: space-around;
+}
+
+.hideAllBtn, .showAllBtn{
+    height: 100%;
+    width: 50%;
+    border: none;
+    outline: none;
+}
+
+.hideAllBtn:hover,
+.showAllBtn:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.hideAllBtn:active,
+.showAllBtn:active {
+    background-color: rgb(204, 204, 204);
 }
