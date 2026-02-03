@@ -59,14 +59,14 @@ export function categoryRender(){
         if (categoryToHide.includes(category.nameOfCategory)){
             categoryControl.innerHTML = `
             <form>
-                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}Color" name="categoryColor" value="${category.color}">
+                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
                 <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}" > 
             </form>
             `
         } else {
             categoryControl.innerHTML = `
             <form>
-                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}Color" name="categoryColor" value="${category.color}">
+                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
                 <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}" checked> 
             </form>
             `

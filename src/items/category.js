@@ -25,4 +25,5 @@ export default class category {
     getItemCount(){
         return this.items.length;
     }
+
 }

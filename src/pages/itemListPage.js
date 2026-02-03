@@ -1,5 +1,6 @@
     import { itemListInputs } from "../controllers/inputController.js";
-    import { getItemList } from "../controllers/stateController.js";
+    import { getCategoryColor, getItemList } from "../controllers/stateController.js";
+import { getTextColor } from "../controllers/utils.js";
 
     const columns = ['date', 'name', 'cost', 'count' , 'total', 'category', 'description', 'priority', 'X'];
     const currency = '¥';
@@ -25,6 +26,7 @@
 
     function createItemRow(item) {
         const page = document.querySelector('.page.itemListPage')
+        const itemCategory = item.category;
         for (const column of columns) {
             const colDiv = document.createElement('div');
             colDiv.valueType = column;
@@ -38,11 +40,13 @@
                     colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable', 'cost');
                     colDiv.dataset.itemID = item.id;
                     colDiv.dataset.infoType = column;
+                    colDiv.dataset.itemCategory = item.category;
                 } else if (column == 'total'){
                     colDiv.textContent = currency + item['cost'] * item['count']
                     colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'total');
                     colDiv.dataset.itemID = item.id;
                     colDiv.dataset.infoType = column;
+                    colDiv.dataset.itemCategory = item.category;
                 } else if (column == 'count'){
                     const countContainer = document.createElement('div')
                     countContainer.classList.add('countContainer')
@@ -55,11 +59,15 @@
 
                     const countDiv = document.createElement('div')
                     countDiv.classList.add('countDiv')
+                    countDiv.dataset.itemCategory = item.category;
+                    countDiv.style.backgroundColor = getCategoryColor(itemCategory);
+                    countDiv.style.color = getTextColor(getCategoryColor(itemCategory))
 
                     // make a div for the number
                     const countDivValue = document.createElement('div')
                     countDivValue.classList.add('countDivValue')
                     countDivValue.textContent = item[column]
+                    
 
                     countDiv.appendChild(countDivValue)
                     countDiv.classList.add('number', 'editable');
@@ -83,8 +91,12 @@
                     colDiv.classList.add('itemListItem', 'itemListCell', 'editable');
                     colDiv.dataset.itemID = item.id;
                     colDiv.dataset.infoType = column;
+                    colDiv.dataset.itemCategory = item.category;
                 }     
             }
+            
+            colDiv.style.backgroundColor = getCategoryColor(itemCategory);
+            colDiv.style.color = getTextColor(getCategoryColor(itemCategory))
             page.appendChild(colDiv);
         }
     }

@@ -72,7 +72,20 @@ let getCategoryToHide = () => {
 let categoryToHideAll = () => {
     categoryToHide = categoryList.map(category => category.nameOfCategory);
 }
-    
+
+let getCategoryColor = (category) => {
+    const foundCategory = categoryList.find(
+        c => c.nameOfCategory == category
+    )
+    return foundCategory.color
+}
+
+let setCategoryToColor = (category, color) => {
+    const foundCategory = categoryList.find(
+        c => c.nameOfCategory == category
+    )
+    foundCategory.color = color;
+}
 
 
 // add additional information to a specific item
@@ -89,7 +102,7 @@ let displayItem = () => {
 
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
-    getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll }
+    getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor}
 
 
 

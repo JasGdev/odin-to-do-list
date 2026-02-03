@@ -7,11 +7,12 @@ import {
     getItemById,
     removeCategoryToHide,
     removeItem,
-    resetCategoryToHide
+    resetCategoryToHide,
+    setCategoryToColor
 } from './stateController.js';
 
 import { renderAddItemPage, renderItemListPage } from './displayController.js';
-import { getCurrentTime } from './utils.js'
+import { getCurrentTime, getTextColor } from './utils.js'
 import { renderPage} from './displayController.js';
 
 
@@ -273,7 +274,29 @@ function categoryInputs() {
     })
 
     // color selectors
-    const categoryColorSelector = document.querySelectorAll('.categoryColor')
+    const categoryColorSelectors = document.querySelectorAll('.categoryColor')
+    categoryColorSelectors.forEach((colorSelector) => {
+
+        const category = colorSelector.id;
+        const divs = document.querySelectorAll(`[data-item-category=${category}]`);
+        
+
+
+        colorSelector.addEventListener("input", (e) => {
+            const color = e.target.value;
+            const textColor = getTextColor(color)
+            // update the category.color
+            // call stateController .setCategoryToColor(category, color)
+            setCategoryToColor(category, color);
+            divs.forEach((div) => {
+                div.style.backgroundColor = color;
+                div.style.color = textColor;
+            })
+        })
+        
+    })
+
+    
 
     
 }
