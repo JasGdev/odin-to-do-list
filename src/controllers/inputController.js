@@ -21,9 +21,7 @@ import { renderPage} from './displayController.js';
 
 
 
-const modal = document.getElementById('myModal');
-const openBtn = document.getElementById('openModalBtn');
-const closeBtn = document.getElementById('closeModalBtn');
+
 
 function initInput() {
     addItemInputs();
@@ -33,6 +31,9 @@ function initInput() {
 
 
 function addItemInputs() {
+    const modal = document.getElementById('addItemModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('addItemCloseModalBtn');
 
     (function addItemModalSetup() {
         openBtn.addEventListener('click', () => {
@@ -375,6 +376,43 @@ function sortBySearch() {
         console.log(search.value)
         renderPage();
     } )
+}
+
+function summaryPopup() {
+    const modal = document.getElementById('summaryModal');
+    const openBtn = document.getElementById('summaryBtn');
+    const closeBtn = document.getElementById('summaryCloseModalBtn');
+
+    (function summaryModalSetup() {
+        openBtn.addEventListener('click', () => {
+            modal.showModal();
+        });
+        modal.addEventListener('click', (e) => {
+            const dialogDimensions = modal.getBoundingClientRect();
+            if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom
+            ) {
+                modal.close();
+                modal.remove();
+            }
+        })
+        closeBtn.addEventListener('click', () => {
+            modal.close();
+            modal.remove();
+            
+        });
+    })();
+
+    (function summaryPagePopup() {
+        const addBtn = document.querySelector('.addBtn')
+        addBtn.addEventListener('click', function () {
+            renderSummaryPage()
+            summarySubmitSetup()
+        })
+    })();
 }
 
 

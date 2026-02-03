@@ -1,8 +1,8 @@
 export default function addItemPage(){
     const content = document.querySelector('.content');
-    const modalContent = document.querySelector('.modalContent')
+    const addItemModalContent = document.querySelector('.addItemModalContent')
     
-    modalContent.innerHTML ='';
+    addItemModalContent.innerHTML ='';
 
 
     
@@ -13,7 +13,7 @@ export default function addItemPage(){
 
     const page = document.createElement('div');
     page.classList.add('page','addItemPage');
-    modalContent.appendChild(page);
+    addItemModalContent.appendChild(page);
 
     const form  = document.createElement('form');
     form.setAttribute('method', "get");

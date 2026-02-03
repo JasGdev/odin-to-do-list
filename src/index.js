@@ -4,6 +4,7 @@ import "./styles/sidebar.css";
 import "./styles/addItemPage.css";
 import "./styles/itemListPage.css";
 import "./styles/categoryRender.css"
+import "./styles/summary.css"
 
 import { initInput, itemListInputs } from "./controllers/inputController.js";
 import { initDisplay } from "./controllers/displayController.js";

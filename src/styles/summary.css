@@ -1,0 +1,17 @@
+/* dialog popup */
+.summaryModalDisplay {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#summaryModal {
+    border: none;
+    align-self: center;
+    justify-self: center;
+}
+
+#summaryModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
