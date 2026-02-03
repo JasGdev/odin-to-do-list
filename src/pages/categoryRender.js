@@ -38,10 +38,20 @@ export function categoryRender(){
 
     categoryList.forEach((category) =>{
         const categoryDiv = document.createElement('div');
-        const categoryName = document.createElement('div');
-        categoryName.textContent = `${category.nameOfCategory} $${category.getTotalSpending()} x${category.getItemCount()}`;
-        categoryName.classList.add('categoryName')
-        categoryDiv.appendChild(categoryName)
+        const categoryRow = document.createElement('div');
+        
+        
+        const categoryInfo = document.createElement('div');
+        categoryInfo.innerHTML = `
+        <div class="categoryName">${category.nameOfCategory}</div>
+        <div class="categorySpending">$${category.getTotalSpending()}</div>
+        `
+        categoryInfo.classList.add('categoryInfo')
+
+        categoryRow.appendChild(categoryInfo)
+        
+        categoryRow.classList.add('categoryRow')
+        categoryDiv.appendChild(categoryRow)
         categoryItemsDiv.appendChild(categoryDiv)
 
         const categoryControl = document.createElement('div');
@@ -51,7 +61,7 @@ export function categoryRender(){
             <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}" name="categoryShow" value="${category.nameOfCategory}" checked> 
         </form>
         `
-        categoryName.appendChild(categoryControl)
+        categoryRow.appendChild(categoryControl)
 
 
 

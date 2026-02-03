@@ -4,14 +4,22 @@
     gap: 1px;
 }
 
-.categoryName {
+.categoryRow {
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0px 5px;
+    /* gap: 30px; */
 }
+
+.categoryInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
 /* for category show and color selector */
 .categoryShow{
@@ -25,7 +33,7 @@
     background-color: transparent;
 }
 
-.categoryName form{
+.categoryRow form{
     display: flex;
     gap: 5px;
 }
