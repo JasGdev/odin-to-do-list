@@ -35,12 +35,21 @@ let removeItem = (idToRemove) => {
 
 let getItemList = () => {
     let itemListToReturn = itemList.slice();
+    // default sort by priority
+    itemListToReturn.sort((a, b) => a.priority - b.priority);
+    
+    // category filter
     categoryToHide.forEach((category) => {
         itemListToReturn = itemListToReturn.filter(item => item.category !== category)
     })
+
+
+
+
     if (sortingMode == 'default'){
         return itemListToReturn
     }
+
     
 }
 

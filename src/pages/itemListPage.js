@@ -106,6 +106,9 @@ import { getTextColor } from "../controllers/utils.js";
         for (const column of columns) {
             const colDiv = document.createElement('div');
             colDiv.classList.add('itemListCategory', 'itemListCell');
+            if (['date', 'name', 'cost', 'count', 'total', 'category'].includes(column)){
+                colDiv.classList.add('sortable')
+            }
             if (column == 'X') { 
                 createCloseButton(colDiv, 'topRowClose') 
             }

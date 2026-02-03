@@ -23,6 +23,7 @@ const closeBtn = document.getElementById('closeModalBtn');
 
 function initInput() {
     addItemInputs();
+    // sortByInputs();
 }
 
 
@@ -300,6 +301,11 @@ function categoryInputs() {
 
     
 }
+
+// function sortByInputs() {
+    
+
+// }
 
 
 
