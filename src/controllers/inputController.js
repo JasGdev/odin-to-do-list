@@ -58,6 +58,7 @@ function addItemInputs() {
             const itemCost = Number(addItemForm.cost.value);
             const itemCategory = addItemForm.category.value;
             const itemDescription = addItemForm.description.value;
+            const itemCount = Number(addItemForm.count.value);
 
             let dateValue = '';
             if (addItemForm.date.value == '') {
@@ -69,7 +70,7 @@ function addItemInputs() {
 
 
             const itemPriority = addItemForm.priority.value;
-            addItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority,);
+            addItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount);
             displayItem();
             addItemForm.reset();
             modal.close();

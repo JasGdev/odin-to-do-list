@@ -6,6 +6,7 @@ let itemList = [];
 let categoryList = [];
 const tax = 0.08
 let totalSpending = 0;
+// 'default', 
 let sortingMode = 'default';
 
 
@@ -25,10 +26,10 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
 }
 
 let removeItem = (idToRemove) => {
-    const itemToRemove = itemList.find((item) => item.id == idToRemove)
-    totalSpending -= itemToRemove.cost
+    const itemToRemove = getItemById(idToRemove)
+    totalSpending -= itemToRemove.total
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
-    categoryFound.removeItem(idToRemove, itemToRemove.cost)
+    categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
     renderPage();
 }

@@ -2,16 +2,27 @@ export default class category {
     constructor(name) {
         this.nameOfCategory = name;
         this.items = [];
-        this.totalSpending = 0;
     }
 
     addItem(item){
         this.items.push(item);
-        this.totalSpending += item.cost;
+        this.totalSpending += item.total;
     }
 
-    removeItem(idToRemove, itemToRemoveCost){
+    removeItem(idToRemove){
         this.items = this.items.filter((item) => item.id !== idToRemove);
-        this.totalSpending -= itemToRemoveCost;
+    }
+
+    getTotalSpending(){
+        // 
+        let total = 0;
+        this.items.forEach((item) => {
+            total += item.total
+        })
+        return total
+    }
+
+    getItemCount(){
+        return this.items.length;
     }
 }

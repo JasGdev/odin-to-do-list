@@ -1,9 +1,9 @@
 import addItemPage from '../pages/addItemPage.js'
 import itemListPage from '../pages/itemListPage.js';
-import categoryRender from '../pages/categoryRender.js';
+import { categoryRender } from '../pages/categoryRender.js';
 
 function initDisplay(){
-    renderItemListPage();
+    renderPage();
 }
 
 function renderPage(){

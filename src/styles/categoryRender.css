@@ -1,0 +1,12 @@
+.categoryItems{
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.categoryName {
+    color: white;
+    background-color: rgb(143, 143, 143);
+
+}
