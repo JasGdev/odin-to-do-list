@@ -1,3 +1,4 @@
+import { categoryInputs } from "../controllers/inputController.js";
 import { getCategoryList } from "../controllers/stateController.js";
 
 
@@ -72,7 +73,7 @@ export function categoryRender(){
 
 
     })
-
+    categoryInputs()
 
 }
 

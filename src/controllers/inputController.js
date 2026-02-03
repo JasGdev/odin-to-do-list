@@ -236,6 +236,28 @@ function itemListInputs() {
 
 }
 
+function categoryInputs() {
+    // category show/hide button
+    const categoryShowHideCheckBoxes = document.querySelectorAll('.categoryShow')
+    const categoryToHide = [];
+    categoryShowHideCheckBoxes.forEach((checkBox) => {
+        checkBox.addEventListener('click', function(){
+            if (checkBox.checked != true){
+
+            }
+        })
+    })
+
+    // show all / hide all button
+    const categoryShowAllBtn = document.querySelectorAll('.showAllBtn')
+    const categoryHideAllBtn = document.querySelectorAll('.hideAllBtn')
+
+    // color selectors
+    const categoryColorSelector = document.querySelectorAll('.categoryColor')
+
+    
+}
 
 
-export { initInput, itemListInputs }
+
+export { initInput, itemListInputs, categoryInputs}

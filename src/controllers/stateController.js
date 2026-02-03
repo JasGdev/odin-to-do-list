@@ -5,8 +5,9 @@ import { renderPage } from './displayController.js';
 let itemList = [];
 let categoryList = [];
 const tax = 0.08
-// 'default', 
 let sortingMode = 'default';
+let categoryToHide = ['Utilities', 'Food'];
+
 
 
 let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount) => {
@@ -33,8 +34,12 @@ let removeItem = (idToRemove) => {
 }
 
 let getItemList = () => {
+    let itemListToReturn = itemList.slice();
+    categoryToHide.forEach((category) => {
+        itemListToReturn = itemListToReturn.filter(item => item.category !== category)
+    })
     if (sortingMode == 'default'){
-        return itemList
+        return itemListToReturn
     }
     
 }
@@ -45,6 +50,18 @@ let getItemById = (itemId) => {
 
 let getCategoryList = () => {
     return categoryList
+}
+
+let resetCategoryToHide = () => {
+    categoryToHide = [];
+}
+
+let addCategoryToHide = (category) => {
+    categoryToHide.push(category)
+}
+
+let removeCategoryToHide = (category) => {
+    categoryToHide = categoryToHide.filter(item => item.nameOfCategory == category)
 }
     
 
