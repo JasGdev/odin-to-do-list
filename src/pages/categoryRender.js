@@ -1,5 +1,5 @@
 import { categoryInputs } from "../controllers/inputController.js";
-import { getCategoryList } from "../controllers/stateController.js";
+import { getCategoryList, getCategoryToHide } from "../controllers/stateController.js";
 
 
 // have a show all and hide all for the categories
@@ -10,14 +10,13 @@ import { getCategoryList } from "../controllers/stateController.js";
 
 // categoryToDisplay will be called by in stateController to determine the item list that is returned
 
-const categoryToDisplay = [];
+
 const categoryItemsDiv = document.querySelector('.categoryItems');
 
 export function categoryRender(){
     categoryItemsDiv.innerHTML = '';
     
     const categoryList = getCategoryList();
-    console.table(categoryList)
 
     // show all and hide all button
     const categoryBtnContainer = document.createElement('div')
@@ -56,12 +55,26 @@ export function categoryRender(){
         categoryItemsDiv.appendChild(categoryDiv)
 
         const categoryControl = document.createElement('div');
-        categoryControl.innerHTML = `
-        <form>
-            <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
-            <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}" name="categoryShow" value="${category.nameOfCategory}" checked> 
-        </form>
-        `
+        const categoryToHide = getCategoryToHide();
+        if (categoryToHide.includes(category.nameOfCategory)){
+            categoryControl.innerHTML = `
+            <form>
+                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}Color" name="categoryColor" value="${category.color}">
+                <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}" > 
+            </form>
+            `
+        } else {
+            categoryControl.innerHTML = `
+            <form>
+                <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}Color" name="categoryColor" value="${category.color}">
+                <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}" checked> 
+            </form>
+            `
+
+        }
+
+        
+       
         categoryRow.appendChild(categoryControl)
 
 
@@ -75,8 +88,4 @@ export function categoryRender(){
     })
     categoryInputs()
 
-}
-
-export function getCategoryToDisplay(){
-    return categoryToDisplay
 }

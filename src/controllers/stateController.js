@@ -6,7 +6,7 @@ let itemList = [];
 let categoryList = [];
 const tax = 0.08
 let sortingMode = 'default';
-let categoryToHide = ['Utilities', 'Food'];
+let categoryToHide = [];
 
 
 
@@ -63,6 +63,10 @@ let addCategoryToHide = (category) => {
 let removeCategoryToHide = (category) => {
     categoryToHide = categoryToHide.filter(item => item.nameOfCategory == category)
 }
+
+let getCategoryToHide = () => {
+    return categoryToHide
+}
     
 
 
@@ -74,11 +78,11 @@ let removeCategoryToHide = (category) => {
 let displayItem = () => {
 
     // console.table(itemList);
-    console.table(categoryList);
+    // console.table(categoryList);
     // console.log(`current spending is $${totalSpending}`)
 }
 
-export { addItem, displayItem, removeItem, getItemList, getItemById, getCategoryList}
+export { addItem, displayItem, removeItem, getItemList, getItemById, getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide}
 
 
 

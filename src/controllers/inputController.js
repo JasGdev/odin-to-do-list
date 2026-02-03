@@ -1,11 +1,13 @@
 import {
+    addCategoryToHide,
     addItem,
     displayItem,
     getItemById,
+    removeCategoryToHide,
     removeItem
 } from './stateController.js';
 
-import { renderAddItemPage } from './displayController.js';
+import { renderAddItemPage, renderItemListPage } from './displayController.js';
 import { getCurrentTime } from './utils.js'
 import { renderPage} from './displayController.js';
 
@@ -239,12 +241,16 @@ function itemListInputs() {
 function categoryInputs() {
     // category show/hide button
     const categoryShowHideCheckBoxes = document.querySelectorAll('.categoryShow')
-    const categoryToHide = [];
     categoryShowHideCheckBoxes.forEach((checkBox) => {
         checkBox.addEventListener('click', function(){
-            if (checkBox.checked != true){
-
+            if (checkBox.checked == false){
+                addCategoryToHide(checkBox.value);
+                renderItemListPage();
+            } else if (checkBox.checked == true){
+                removeCategoryToHide(checkBox.value);
+                renderItemListPage();
             }
+            
         })
     })
 
