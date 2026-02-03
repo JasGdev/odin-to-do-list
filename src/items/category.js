@@ -2,6 +2,7 @@ export default class category {
     constructor(name) {
         this.nameOfCategory = name;
         this.items = [];
+        this.color = '#D3D3D3';
     }
 
     addItem(item){

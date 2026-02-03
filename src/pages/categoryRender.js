@@ -47,7 +47,8 @@ export function categoryRender(){
         const categoryControl = document.createElement('div');
         categoryControl.innerHTML = `
         <form>
-            <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}" name="categoryShow" value="${category.nameOfCategory}" checked>
+            <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
+            <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}" name="categoryShow" value="${category.nameOfCategory}" checked> 
         </form>
         `
         categoryName.appendChild(categoryControl)

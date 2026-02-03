@@ -56,6 +56,19 @@ Display Controller
 # renders pages as needed imports getItemList/getCategory... from StateController to dictate what to display
 ```
 
+Sorting options:
+
+1. filter categories
+2. sort by 
+    - date
+    - name
+    - cost
+    - count
+    - total
+    - category
+3. default sorted by priority/date
+
+
 
 
 

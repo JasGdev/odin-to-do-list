@@ -1,24 +1,36 @@
 .categoryItems{
     display: flex;
     flex-direction: column;
-
     gap: 1px;
 }
 
 .categoryName {
-    color: white;
-    background-color: rgb(143, 143, 143);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0px 5px;
 }
 
+/* for category show and color selector */
 .categoryShow{
     transform: scale(1.5);
-    
 }
 
+.categoryColor {
+    width: 24px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.categoryName form{
+    display: flex;
+    gap: 5px;
+}
+
+/* for show all and hide all btn */
 .categoryBtnContainer{
     display: flex;
     gap: 1px;
