@@ -346,6 +346,10 @@ function getSortingMode() {
     return sortingMode
 }
 
+function sortByMonthInputs() {
+    
+}
+
 
 
 export { initInput, itemListInputs, categoryInputs, getSortingMode, sortByInputs}
