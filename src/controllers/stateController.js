@@ -1,11 +1,12 @@
 import listItem from '../items/listItem.js'
 import category from '../items/category.js'
-import itemListPage from '../pages/itemListPage.js';
+import { renderPage } from './displayController.js';
 
 let itemList = [];
 let categoryList = [];
 const tax = 0.08
 let totalSpending = 0;
+let sortingMode = 'default';
 
 
 let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount) => {
@@ -20,7 +21,7 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
         categoryList.push(newCategory)
     }
     totalSpending += itemCost;   
-    itemListPage();    
+    renderPage();    
 }
 
 let removeItem = (idToRemove) => {
@@ -29,15 +30,22 @@ let removeItem = (idToRemove) => {
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove, itemToRemove.cost)
     itemList = itemList.filter((item) => item.id !== idToRemove);
-    itemListPage();
+    renderPage();
 }
 
 let getItemList = () => {
-    return itemList
+    if (sortingMode == 'default'){
+        return itemList
+    }
+    
 }
 
 let getItemById = (itemId) => {
     return itemList.find((item) => item.id === itemId)
+}
+
+let getCategoryList = () => {
+    return categoryList
 }
     
 
@@ -54,7 +62,7 @@ let displayItem = () => {
     // console.log(`current spending is $${totalSpending}`)
 }
 
-export { addItem, displayItem, removeItem, getItemList, getItemById}
+export { addItem, displayItem, removeItem, getItemList, getItemById, getCategoryList}
 
 
 

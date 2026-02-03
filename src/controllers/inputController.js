@@ -7,7 +7,7 @@ import {
 
 import { renderAddItemPage } from './displayController.js';
 import { getCurrentTime } from './utils.js'
-import itemListPage from '../pages/itemListPage.js';
+import { renderPage} from './displayController.js';
 
 
 
@@ -138,7 +138,7 @@ function itemListInputs() {
                         getItemById(itemId)[propertyToChange] = newValue;
                         valueDialog.close();
                         page.removeChild(valueDialog)
-                        itemListPage();
+                        renderPage();
                         displayItem();
 
                         
@@ -212,7 +212,7 @@ function itemListInputs() {
                 } else if (getItemById(btnItemID)['count'] > 0) {
                     getItemById(btnItemID)['count'] -= 1;
                 }
-                itemListPage();
+                renderPage();
                 displayItem();
 
             })
