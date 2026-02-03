@@ -197,6 +197,28 @@ function itemListInputs() {
 
         })
 
+        // implement increase and decrease button on count
+        // increase and decrease button have .dataset.type = 'increase' or 'decrease'
+        // btn also has .dataset.itemID 
+        const countBtns = document.querySelectorAll('.countBtn')
+        countBtns.forEach((btn) => {
+            btn.addEventListener('click', function() {
+                const btnItemID = btn.dataset.itemID
+                const btnType = btn.dataset.type
+                if (btnType == 'increase'){
+                    getItemById(btnItemID)['count'] += 1;
+                    
+
+                } else if (getItemById(btnItemID)['count'] > 0) {
+                    getItemById(btnItemID)['count'] -= 1;
+                }
+                itemListPage();
+                displayItem();
+
+            })
+        })
+
+
 
 
 

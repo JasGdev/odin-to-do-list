@@ -35,7 +35,7 @@
             else { 
                 if (column == 'cost'){
                     colDiv.textContent = currency + item[column] 
-                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable');
+                    colDiv.classList.add('itemListItem', 'itemListCell', 'number', 'editable', 'cost');
                     colDiv.dataset.itemID = item.id;
                     colDiv.dataset.infoType = column;
                 } else if (column == 'total'){
@@ -48,8 +48,9 @@
                     countContainer.classList.add('countContainer')
 
                     const increaseCountBtn = document.createElement('button')
-                    increaseCountBtn.classList.add('increaseCountBtn')
+                    increaseCountBtn.classList.add('increaseCountBtn', 'countBtn')
                     increaseCountBtn.dataset.itemID = item.id;
+                    increaseCountBtn.dataset.type = 'increase';
                     increaseCountBtn.textContent = '+'
 
                     const countDiv = document.createElement('div')
@@ -66,8 +67,9 @@
                     countDiv.dataset.infoType = column;
 
                     const decreaseCountBtn = document.createElement('button')
-                    decreaseCountBtn.classList.add('decreaseCountBtn')
+                    decreaseCountBtn.classList.add('decreaseCountBtn', 'countBtn')
                     decreaseCountBtn.dataset.itemID = item.id;
+                    decreaseCountBtn.dataset.type = 'decrease';
                     decreaseCountBtn.textContent = '-'
 
                     colDiv.dataset.infoType = column;

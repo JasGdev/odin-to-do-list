@@ -154,3 +154,7 @@ dialog {
     border: none;
     padding: none;
 }
+
+.total, .cost{
+    padding-left: 10px;
+}
