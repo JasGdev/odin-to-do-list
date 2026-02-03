@@ -1,10 +1,12 @@
 import {
     addCategoryToHide,
     addItem,
+    categoryToHideAll,
     displayItem,
     getItemById,
     removeCategoryToHide,
-    removeItem
+    removeItem,
+    resetCategoryToHide
 } from './stateController.js';
 
 import { renderAddItemPage, renderItemListPage } from './displayController.js';
@@ -245,18 +247,26 @@ function categoryInputs() {
         checkBox.addEventListener('click', function(){
             if (checkBox.checked == false){
                 addCategoryToHide(checkBox.value);
-                renderItemListPage();
             } else if (checkBox.checked == true){
                 removeCategoryToHide(checkBox.value);
-                renderItemListPage();
             }
+            renderPage();
             
         })
     })
 
     // show all / hide all button
-    const categoryShowAllBtn = document.querySelectorAll('.showAllBtn')
-    const categoryHideAllBtn = document.querySelectorAll('.hideAllBtn')
+    const categoryShowAllBtn = document.querySelector('.showAllBtn')
+    const categoryHideAllBtn = document.querySelector('.hideAllBtn')
+    categoryShowAllBtn.addEventListener('click', function(){
+        resetCategoryToHide();
+        renderPage();
+    })
+
+    categoryHideAllBtn.addEventListener('click', function(){
+        categoryToHideAll();
+        renderPage();
+    })
 
     // color selectors
     const categoryColorSelector = document.querySelectorAll('.categoryColor')

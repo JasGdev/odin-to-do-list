@@ -67,6 +67,10 @@ let removeCategoryToHide = (category) => {
 let getCategoryToHide = () => {
     return categoryToHide
 }
+
+let categoryToHideAll = () => {
+    categoryToHide = categoryList.map(category => category.nameOfCategory);
+}
     
 
 
@@ -82,7 +86,9 @@ let displayItem = () => {
     // console.log(`current spending is $${totalSpending}`)
 }
 
-export { addItem, displayItem, removeItem, getItemList, getItemById, getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide}
+export { 
+    addItem, displayItem, removeItem, getItemList, getItemById, 
+    getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll }
 
 
 
