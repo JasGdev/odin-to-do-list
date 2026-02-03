@@ -46,31 +46,40 @@ let getItemList = () => {
     categoryToHide.forEach((category) => {
         itemListToReturn = itemListToReturn.filter(item => item.category !== category)
     })
+
+
     console.log(sortingMode)
     switch (sortingMode) {
         case 'default':
             return itemListToReturn
         case 'date':
+            return itemListToReturn.sort((a, b) => new Date(a.date) - new Date(b.date))
         case 'dateReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => new Date(b.date) - new Date(a.date))
         case 'name':
+            return itemListToReturn.sort((a, b) => a.name.localeCompare(b.name))
         case 'nameReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.name.localeCompare(a.name))
         case 'cost':
+            return itemListToReturn.sort((a, b) => a.cost - b.cost);
         case 'costReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.cost - a.cost);
         case 'count':
+            return itemListToReturn.sort((a, b) => a.count - b.count);
         case 'countReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.count - a.count);
         case 'total':
+            return itemListToReturn.sort((a, b) => a.getTotalForItem() - b.getTotalForItem());
         case 'totalReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.getTotalForItem() - a.getTotalForItem());
         case 'category':
+            return itemListToReturn.sort((a, b) => a.category.localeCompare(b.category))
         case 'categoryReverse': 
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.category.localeCompare(a.cat))
         case 'priority':
+            return itemListToReturn.sort((a, b) => a.priority - b.priority);
         case 'priorityReverse':
-            return itemListToReturn
+            return itemListToReturn.sort((a, b) => b.priority - a.priority);
     }
 
     
