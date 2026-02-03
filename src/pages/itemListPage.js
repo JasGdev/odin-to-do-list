@@ -20,8 +20,6 @@ import { getTextColor } from "../controllers/utils.js";
 
         itemListInputs();
         sortByInputs();
-
-        
     }
 
 
@@ -108,13 +106,7 @@ import { getTextColor } from "../controllers/utils.js";
         for (const column of columns) {
 
             const colDiv = document.createElement('div');
-            if (getSortingMode() == column) {
-                colDiv.style.backgroundColor = 'black';
-                colDiv.style.color = 'white';
-            } else if (getSortingMode() == column+'Reverse'){
-                colDiv.style.backgroundColor = 'white';
-                colDiv.style.color = 'black';
-            }
+
             colDiv.classList.add('itemListCategory', 'itemListCell');
             if (['date', 'name', 'cost', 'count', 'total', 'category', 'sortable', 'priority'].includes(column)){
                 colDiv.classList.add('sortable')
@@ -122,7 +114,21 @@ import { getTextColor } from "../controllers/utils.js";
             if (column == 'X') { 
                 createCloseButton(colDiv, 'topRowClose') 
             }
-            else { colDiv.textContent = column.charAt(0).toUpperCase() + column.substring(1) }
+            else { 
+                if (getSortingMode() == column) {
+                    colDiv.style.backgroundColor = 'black';
+                    colDiv.style.color = 'white';
+                    colDiv.textContent = '▲' + column.charAt(0).toUpperCase() + column.substring(1)
+                } else if (getSortingMode() == column + 'Reverse') {
+                    colDiv.style.backgroundColor = 'white';
+                    colDiv.style.color = 'black';
+                    colDiv.textContent = '▼' + column.charAt(0).toUpperCase() + column.substring(1)
+                } else {
+                    colDiv.textContent = column.charAt(0).toUpperCase() + column.substring(1);
+                }
+                
+                
+                 }
             page.appendChild(colDiv);
         }
 

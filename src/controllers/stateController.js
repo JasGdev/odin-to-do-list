@@ -46,7 +46,7 @@ let getItemList = () => {
     categoryToHide.forEach((category) => {
         itemListToReturn = itemListToReturn.filter(item => item.category !== category)
     })
-
+    console.log(sortingMode)
     switch (sortingMode) {
         case 'default':
             return itemListToReturn

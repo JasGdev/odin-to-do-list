@@ -310,11 +310,11 @@ function sortByInputs() {
     sortableDivs.forEach((sortableDiv) => {
         // left click for sorting mode normal
         sortableDiv.addEventListener('click', function(){
-            if (sortingMode == sortableDiv.textContent.toLowerCase()){
+            if (sortingMode == sortableDiv.textContent.toLowerCase().replace(/[▲▼]/g, '')){
                 sortingMode = 'default'
             } else {
                 // update sorting mode in stateController
-                sortingMode = sortableDiv.textContent.toLowerCase();
+                sortingMode = sortableDiv.textContent.toLowerCase().replace(/[▲▼]/g, '');
             }
 
             setSortingMode(sortingMode)
@@ -325,12 +325,11 @@ function sortByInputs() {
         // right click for sorting mode reverse
         sortableDiv.addEventListener("contextmenu", (e) => {
             e.preventDefault();
-            console.log('Right')
-            if (sortingMode == sortableDiv.textContent.toLowerCase() + 'Reverse') {
+            if (sortingMode == sortableDiv.textContent.toLowerCase().replace(/[▲▼]/g, '') + 'Reverse') {
                 sortingMode = 'default'
             } else {
                 // update sorting mode in stateController
-                sortingMode = sortableDiv.textContent.toLowerCase()+'Reverse';
+                sortingMode = sortableDiv.textContent.toLowerCase().replace(/[▲▼]/g, '') +'Reverse';
             }
 
             setSortingMode(sortingMode)
