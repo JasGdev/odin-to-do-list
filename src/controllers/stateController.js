@@ -51,18 +51,25 @@ let getItemList = () => {
         case 'default':
             return itemListToReturn
         case 'date':
+        case 'dateReverse':
             return itemListToReturn
         case 'name':
+        case 'nameReverse':
             return itemListToReturn
         case 'cost':
+        case 'costReverse':
             return itemListToReturn
         case 'count':
+        case 'countReverse':
             return itemListToReturn
         case 'total':
+        case 'totalReverse':
             return itemListToReturn
         case 'category':
+        case 'categoryReverse': 
             return itemListToReturn
         case 'priority':
+        case 'priorityReverse':
             return itemListToReturn
     }
 

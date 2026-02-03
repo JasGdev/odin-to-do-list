@@ -302,21 +302,42 @@ function categoryInputs() {
     
 }
 
-let sortingMode = '';
+let sortingMode = 'default';
 
 function sortByInputs() {
     
     const sortableDivs = document.querySelectorAll('.sortable')
     sortableDivs.forEach((sortableDiv) => {
+        // left click for sorting mode normal
         sortableDiv.addEventListener('click', function(){
+            if (sortingMode == sortableDiv.textContent.toLowerCase()){
+                sortingMode = 'default'
+            } else {
+                // update sorting mode in stateController
+                sortingMode = sortableDiv.textContent.toLowerCase();
+            }
 
-            // update sorting mode in stateController
-            sortingMode = sortableDiv.textContent.toLowerCase();
-            console.log(sortingMode)
             setSortingMode(sortingMode)
             renderPage()
 
         })
+
+        // right click for sorting mode reverse
+        sortableDiv.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            console.log('Right')
+            if (sortingMode == sortableDiv.textContent.toLowerCase() + 'Reverse') {
+                sortingMode = 'default'
+            } else {
+                // update sorting mode in stateController
+                sortingMode = sortableDiv.textContent.toLowerCase()+'Reverse';
+            }
+
+            setSortingMode(sortingMode)
+            renderPage()
+
+        })
+
     })
     
 

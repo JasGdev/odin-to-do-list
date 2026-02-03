@@ -111,6 +111,9 @@ import { getTextColor } from "../controllers/utils.js";
             if (getSortingMode() == column) {
                 colDiv.style.backgroundColor = 'black';
                 colDiv.style.color = 'white';
+            } else if (getSortingMode() == column+'Reverse'){
+                colDiv.style.backgroundColor = 'white';
+                colDiv.style.color = 'black';
             }
             colDiv.classList.add('itemListCategory', 'itemListCell');
             if (['date', 'name', 'cost', 'count', 'total', 'category', 'sortable', 'priority'].includes(column)){
