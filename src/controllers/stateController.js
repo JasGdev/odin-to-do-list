@@ -25,7 +25,6 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
 
 let removeItem = (idToRemove) => {
     const itemToRemove = getItemById(idToRemove)
-    totalSpending -= itemToRemove.getTotalForItem()
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
