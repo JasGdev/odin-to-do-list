@@ -24,6 +24,7 @@ const closeBtn = document.getElementById('closeModalBtn');
 
 function initInput() {
     addItemInputs();
+    sortByMonthInputs();
 }
 
 
@@ -347,6 +348,19 @@ function getSortingMode() {
 }
 
 function sortByMonthInputs() {
+    const startMonth = document.querySelector('input[name="startMonthSelect"]');
+    const endMonth = document.querySelector('input[name="endMonthSelect"]');
+
+    // if only start month is chosen (display only items in that month)
+    // if both are chosen (display items from star to end month)
+    // if only end month are chose (display items until end month)
+    startMonth.addEventListener('change', () => {
+        console.log(startMonth.value)
+    } )
+
+    endMonth.addEventListener('change', () => {
+        console.log(endMonth.value)
+    } )
     
 }
 

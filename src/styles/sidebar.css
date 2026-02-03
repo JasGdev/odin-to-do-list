@@ -55,22 +55,18 @@ form {
 
 /* Month Select */
 .MonthSelect {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 10px;
-}
-
-.MonthSelect form{
     display: grid;
-    grid-template-columns: 2fr 7fr;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr;
 }
 
-.MonthSelect label {
+.MonthSelect label{
     background-color: rgb(182, 182, 182);
     padding: 0px 10px;
     width: 100%;
     /* font-size: 12px; */
-    align-items: center;
+
+    grid-column: 1/2;
 }
 
 .MonthSelect input{
@@ -78,6 +74,7 @@ form {
     outline: none;
     border: none;
     padding-left: 20px;
+    grid-column: 2/3;
     /* width: 90%; */
     /* font-size: 12px; */
     
