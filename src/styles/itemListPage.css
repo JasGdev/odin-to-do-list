@@ -3,7 +3,7 @@
     background-color: rgb(66, 66, 66);
     display: grid;
     grid-auto-rows: 25px;
-    grid-template-columns: minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 1fr) minmax(100px, 1fr) minmax(min-content, 1fr)
+    grid-template-columns: minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content)
     minmax(min-content, 3fr) minmax(min-content, 6fr) minmax(min-content, 2fr) 25px ;
     gap: 1px;
 
@@ -155,7 +155,10 @@ dialog {
     padding: none;
 }
 
-.total, .cost{
+.total, .cost, .countDivValue{
     padding-left: 10px;
+}
+.countDivValue {
+    padding-right: 10px;
 }
 
