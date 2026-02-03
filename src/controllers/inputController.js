@@ -35,10 +35,13 @@ function addItemInputs() {
                 e.clientY > dialogDimensions.bottom
             ) {
                 modal.close();
+                modal.remove();
             }
         })
         closeBtn.addEventListener('click', () => {
             modal.close();
+            modal.remove();
+            
         });
     })();
 
@@ -110,7 +113,7 @@ function itemListInputs() {
                 // clicking outside of modal cancels input
                 // clicking enter updates the value based on what is inside input
                 const valueDialog = document.createElement('dialog');
-                page.appendChild(valueDialog);
+                document.body.appendChild(valueDialog);
                 valueDialog.showModal();
                 valueDialog.addEventListener('click', (e) => {
                     // if click outside of modal
@@ -122,7 +125,7 @@ function itemListInputs() {
                         e.clientY > dialogDimensions.bottom
                     ) {
                         valueDialog.close();
-                        page.removeChild(valueDialog)
+                        valueDialog.remove();
                     }
 
                 })
@@ -135,10 +138,15 @@ function itemListInputs() {
                         const itemId = dataCell.dataset.itemID; 
                         const propertyToChange = dataCell.dataset.infoType;
                         const newValue = document.querySelector('.itemListForm').formValue.value; 
-
-                        getItemById(itemId)[propertyToChange] = newValue;
+                        
+                        if (Number.isInteger(Number(newValue))){
+                            getItemById(itemId)[propertyToChange] = Number(newValue);
+                        } else {
+                            getItemById(itemId)[propertyToChange] = newValue;
+                        }
+                        
                         valueDialog.close();
-                        page.removeChild(valueDialog)
+                        valueDialog.remove();
                         renderPage();
                         displayItem();
 

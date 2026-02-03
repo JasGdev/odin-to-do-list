@@ -1,22 +1,26 @@
-.page.itemListPage{
+.itemListPage {
     min-height: 100%;
     background-color: rgb(66, 66, 66);
     display: grid;
     grid-auto-rows: 25px;
-    grid-template-columns: minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content)
-    minmax(min-content, 3fr) minmax(min-content, 6fr) minmax(min-content, 2fr) 25px ;
+    grid-template-columns:
+        minmax(min-content, 2fr) 
+        minmax(min-content, 4fr) 
+        minmax(min-content, max-content) 
+        minmax(min-content, max-content) 
+        minmax(min-content, max-content) 
+        minmax(min-content, 3fr) 
+        minmax(min-content, 6fr) 
+        minmax(min-content, 2fr) 
+        25px;
     gap: 1px;
-
 }
 
-.itemListCell, .countContainer
- {
-    /* border: rgb(151, 151, 151) 1px solid; */
+.itemListCell {
     background: rgb(211, 211, 211);
     white-space: nowrap;
     overflow: hidden;
     user-select: none;
-    /* outline: 1px solid rgba(54, 54, 54, 0.5); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +30,14 @@
     justify-content: end;
     padding-right: 10px;
 }
-.itemListItem:hover{
-    background-color:rgb(190, 190, 190);
+
+.itemListItem:hover {
+    background-color: rgb(190, 190, 190);
 }
 
 .closeBtn {
     height: 100%;
     width: 100%;
-    /* border-radius: 0%; */
     border: 0px;
     font-weight: 900;
 }
@@ -43,41 +47,145 @@
     background-color: rgb(255, 0, 0);
 }
 
-.itemListCategory, .itemListCategory .closeBtn{
+.itemListCategory,
+.itemListCategory .closeBtn {
     background-color: rgb(129, 129, 129);
     color: black;
 }
 
-
-.itemListCategory:hover, .itemListCategory .closeBtn:hover{
+.itemListCategory:hover,
+.itemListCategory .closeBtn:hover {
     background-color: rgb(105, 105, 105);
 }
 
-.page.itemListPage dialog {
-    border: none;
-    outline: none;
-    padding: 0px;
-    margin: 0px;
-    box-shadow: none;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-
-}
-
-.page.itemListPage dialog::backdrop {
+/* dialog backdrop */
+.itemListPage dialog::backdrop {
     background-color: rgba(37, 37, 37, 0.2);
 }
 
-.page.itemListPage dialog form {
+.itemListForm {
     margin: 0;
     padding: 0;
     display: flex;
     height: 100%;
 }
 
-/* for normal modal */
-.page.itemListPage dialog form input{
+.inputDiv {
+    width: 100%;
+}
+
+.itemListPage dialog form input.number {
+    text-align: end;
+}
+
+
+/* =========================
+   ✅ COUNT CONTAINER FIXES
+   ========================= */
+
+.countContainer {
+    background: rgb(211, 211, 211);
+    overflow: hidden;
+
+    height: 100%;
+    display: grid;
+    grid-template-columns: 27px 1fr 27px;
+    align-items: stretch;
+}
+
+/* ✅ padding won’t “grow” elements anymore */
+.countContainer,
+.countContainer * {
+    box-sizing: border-box;
+}
+
+.decreaseCountBtn,
+.increaseCountBtn {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-weight: bolder;
+
+    /* ✅ key fixes */
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.decreaseCountBtn:hover {
+    background-color: rgb(0, 0, 0);
+    color: red;
+}
+
+.increaseCountBtn:hover {
+    background-color: rgb(0, 0, 0);
+    color: green;
+}
+
+.decreaseCountBtn {
+    grid-column: 3/4;
+    font-size: larger;
+}
+
+.increaseCountBtn {
+    grid-column: 1/2;
+    font-size: large;
+}
+
+.countDiv {
+    grid-column: 2/3;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 100%;
+    text-align: center;
+
+    /* center like buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 7px;
+}
+
+.countDiv:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+/* remove top padding and center */
+.countDivValue {
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================
+    GENERAL INPUT STYLES
+   ========================= */
+
+dialog {
+    border: none;
+    padding: 0;
+}
+
+.total,
+.cost {
+    padding-left: 10px;
+}
+
+.itemListForm {
+    height: 100%;
+}
+
+.itemListInput {
     width: 100%;
     height: 100%;
     outline: none;
@@ -85,80 +193,3 @@
     border-style: none;
     text-align: center;
 }
-
-.inputDiv {
-    width: 100%;
-}
-
-.page.itemListPage dialog form input.number {
-    text-align: end;
-}
-
-/* for count modal */
-
-.countContainer {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 27px 1fr 27px ;
-
-    
-}
-
-.decreaseCountBtn, .increaseCountBtn{
-    height: 100%;
-    width: 100%;
-    border: none;
-    font-weight: bolder;
-    
-}
-
-.decreaseCountBtn:hover{
-    background-color: rgb(0, 0, 0);
-    color: red;
-    
-}
-.increaseCountBtn:hover{
-    background-color: rgb(0, 0, 0);
-    color: green;
-}
-
-
-.decreaseCountBtn{
-    grid-column: 3/4;
-    font-size: larger;
-}
-
- .increaseCountBtn{
-    grid-column: 1/2;   
-    font-size: large;
- }
-.countDiv {
-    grid-column: 2/3;  
-    background-color: transparent;
-    border: none;
-    outline: none;
-    height: 100%;
-    text-align: center;
-   
-}
-
-.countDiv:hover{
-    background-color:rgb(190, 190, 190);
-}
-
-.countDivValue{
-    padding-top: 2px;
-}
-
-dialog {
-    border: none;
-    padding: none;
-}
-
-.total, .cost, .countDivValue{
-    padding-left: 10px;
-}
-.countDivValue {
-    padding-right: 10px;
-}
-

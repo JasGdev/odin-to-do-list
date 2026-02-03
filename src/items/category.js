@@ -6,7 +6,6 @@ export default class category {
 
     addItem(item){
         this.items.push(item);
-        this.totalSpending += item.total;
     }
 
     removeItem(idToRemove){
@@ -17,7 +16,7 @@ export default class category {
         // 
         let total = 0;
         this.items.forEach((item) => {
-            total += item.total
+            total += item.getTotalForItem()
         })
         return total
     }

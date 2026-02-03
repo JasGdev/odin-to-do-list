@@ -5,7 +5,7 @@ export default class listItem {
         this.cost = cost;
         this.count = count;
         this.category = category
-        this.total = this.cost * this.count
+        
 
         // optional input after item creation or
         // by selection additional info on item creation
@@ -13,6 +13,10 @@ export default class listItem {
         this.date = date;
         this.priority = priority;
         this.id = crypto.randomUUID(); 
+    }
+
+    getTotalForItem(){
+        return this.cost * this.count
     }
     
 

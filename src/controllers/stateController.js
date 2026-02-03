@@ -5,7 +5,6 @@ import { renderPage } from './displayController.js';
 let itemList = [];
 let categoryList = [];
 const tax = 0.08
-let totalSpending = 0;
 // 'default', 
 let sortingMode = 'default';
 
@@ -20,14 +19,13 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
         const newCategory = new category(itemCategory);
         newCategory.addItem(newItem)
         categoryList.push(newCategory)
-    }
-    totalSpending += itemCost;   
+    } 
     renderPage();    
 }
 
 let removeItem = (idToRemove) => {
     const itemToRemove = getItemById(idToRemove)
-    totalSpending -= itemToRemove.total
+    totalSpending -= itemToRemove.getTotalForItem()
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
@@ -58,8 +56,8 @@ let getCategoryList = () => {
 // Temporary display item which will be implemented in UI later
 let displayItem = () => {
 
-    console.table(itemList);
-    // console.table(categoryList);
+    // console.table(itemList);
+    console.table(categoryList);
     // console.log(`current spending is $${totalSpending}`)
 }
 
