@@ -102,6 +102,7 @@ function itemListInputs() {
         let page = document.querySelector('.page')
         const dataCells = document.querySelectorAll('.editable')
 
+        // Allow click and edit like in excel
         dataCells.forEach((dataCell) => {
             dataCell.addEventListener('click', function () {
                 // create modal that pops up covering where dataCell is (darken everything else)
@@ -195,6 +196,10 @@ function itemListInputs() {
             })
 
         })
+
+
+
+
     })();
 
 

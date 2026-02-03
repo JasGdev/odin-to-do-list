@@ -75,19 +75,13 @@
                     countContainer.appendChild(countDiv);
                     countContainer.appendChild(decreaseCountBtn);
                     colDiv.appendChild(countContainer)
-
-                    
-                   
                 }
                 else {
                     colDiv.textContent = item[column]
                     colDiv.classList.add('itemListItem', 'itemListCell', 'editable');
                     colDiv.dataset.itemID = item.id;
                     colDiv.dataset.infoType = column;
-                }
-                
-                
-                
+                }     
             }
             page.appendChild(colDiv);
         }
