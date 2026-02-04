@@ -408,4 +408,18 @@ function summaryPopup() {
 }
 
 
+// delete all
+function deleteAllInput() {
+    const deleteAllBtn = document.querySelector('.itemListCategory .closeBtn')
+    deleteAllBtn.addEventListener('click', )
+}
+
+
+
+
+// undo delete
+
+
+
+
 export { initInput, itemListInputs, categoryInputs, getSortingMode, sortByInputs}

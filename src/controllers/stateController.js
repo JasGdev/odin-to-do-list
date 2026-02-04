@@ -1,7 +1,7 @@
 import listItem from '../items/listItem.js'
 import category from '../items/category.js'
 import { renderPage } from './displayController.js';
-import { categoryLoader, itemLoader } from './localStorageHelper.js';
+import { categoryLoader, itemLoader, deleteHistoryLoader } from './localStorageHelper.js';
 
 
 
@@ -18,12 +18,18 @@ let startMonth = '';
 let endMonth = '';
 let searchFilter = '';
 let currency = '¥';
+let deleteHistory = []
 
 // local storage
 const initState = () => {
     const storedItems = localStorage.getItem("itemList");
     if (storedItems) {
         itemList = itemLoader(JSON.parse(storedItems));
+    }
+
+    const storedDeleteHistory = localStorage.getItem("deleteHistory");
+    if (storedDeleteHistory) {
+        deleteHistory = deleteHistoryLoader(JSON.parse(storedDeleteHistory));
     }
 
     const storedCategories = localStorage.getItem('categoryList');
@@ -55,12 +61,12 @@ const initState = () => {
     if (storedSearchFilter) {
         searchFilter = storedSearchFilter;
     }
-
-    console.log(storedItems)
+    
 };
 
 const storeState = () => {
     localStorage.setItem("itemList", JSON.stringify(itemList))
+    localStorage.setItem("deleteHistory", JSON.stringify(deleteHistory))
     localStorage.setItem('categoryList', JSON.stringify(categoryList))
     localStorage.setItem('sortingMode', sortingMode)
     localStorage.setItem('categoryToHide', JSON.stringify(categoryToHide))
@@ -91,10 +97,11 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
 
 let removeItem = (idToRemove) => {
     const itemToRemove = getItemById(idToRemove)
-
+    deleteHistory.push([itemToRemove])
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
+    console.log(deleteHistory)
     renderPage();
     storeState()
 }
@@ -256,6 +263,7 @@ let setSearchFilter = (searchValue) => {
 let getCurrency = () => {
     return currency
 }
+
 
 
 export { 

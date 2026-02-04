@@ -20,6 +20,18 @@ function itemLoader(parsedItemList) {
     return itemList
 }
 
+function deleteHistoryLoader(parsedDeleteHistory) {
+    const deleteHistory = []
+    for (const deleteHistorySubArray of parsedDeleteHistory){
+        const deleteHistorySubArrayLoaded = itemLoader(deleteHistorySubArray)
+        deleteHistory.push(deleteHistorySubArrayLoaded)
+    }
+    return deleteHistory
+}
+
+
+
+
 function storageAvailable(type) {
     let storage;
     try {
@@ -39,4 +51,4 @@ function storageAvailable(type) {
     }
 }
 
-export {categoryLoader, itemLoader, storageAvailable}
+export {categoryLoader, itemLoader, storageAvailable, deleteHistoryLoader}

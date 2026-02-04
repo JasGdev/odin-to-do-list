@@ -14,16 +14,7 @@ import listItem from "./items/listItem.js"
 import { storageAvailable } from "./controllers/localStorageHelper.js";
 storageAvailable
 
-// if (storageAvailable("localStorage")) {
-//     console.log('YES')// Yippee! We can use localStorage awesomeness
-// } else {
-//     console.log('NO')
-//     // Too bad, no localStorage for us
-// }
-
-
 initInput();
-
 initState();
 initDisplay();  
 
@@ -48,7 +39,7 @@ initDisplay();
 //     1
 // );
 
-// state.addItem(
+// addItem(
 //     "Electricity Bill",
 //     120,
 //     "Utilities",
@@ -58,7 +49,7 @@ initDisplay();
 //     1
 // );
 
-// state.addItem(
+// addItem(
 //     "Lunch with friends",
 //     28,
 //     "Food",
@@ -67,48 +58,6 @@ initDisplay();
 //     1,
 //     1
 // );
-
-
-// let categoryList = state.getCategoryList()
-// let itemList = state.getItemList()
-
-
-// let stringifyCategoryList = JSON.stringify(categoryList)
-// let stringifyItemList = JSON.stringify(itemList)
-
-// let parsedCategoryList = JSON.parse(stringifyCategoryList)
-// let parsedItemList = JSON.parse(stringifyItemList)
-
-// let categoryToHide = state.getCategoryToHide();
-// let stringifyCategoryToHide = JSON.stringify(categoryToHide);
-// let parsedCategoryToHide = JSON.parse(stringifyCategoryToHide)
-
-// function categoryLoader(parsedCategoryList){
-//     const categoryList = []
-//     for (const cat of parsedCategoryList) {
-//         categoryList.push(new category(cat.nameOfCategory, itemLoader(cat.items), cat.color))
-//     }
-//     return categoryList
-// }
-
-// function itemLoader(parsedItemList){
-//     const itemList = []
-//     for (const item of parsedItemList){
-//         itemList.push(new listItem(
-//             item.name, item.cost, item.category, item.description,
-//             item.date, item.priority, item.count, item.id))
-
-//     }
-//     return itemList
-// }
-
-// console.log(parsedCategoryToHide)
-
-
-
-
-// console.log(categoryLoader(parsedCategoryList))
-// console.log(itemLoader(parsedItemList));
 
 
 

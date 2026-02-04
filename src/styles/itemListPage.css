@@ -193,3 +193,15 @@ dialog {
     border-style: none;
     text-align: center;
 }
+
+/* top row close button */
+
+.itemListCategory .closeBtn{
+    background-color: rgb(0, 0, 0);
+    color: red;
+}
+
+.itemListCategory .closeBtn:hover {
+    background-color: rgb(255, 255, 255);
+    color: red;
+}
