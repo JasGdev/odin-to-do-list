@@ -94,49 +94,49 @@ const wipeState = () => {
     deleteHistory = []
 
 
-    addItem(
-        "Groceries",
-        45,
-        "Food",
-        "Weekly supermarket run",
-        "2026-02-02",
-        3,
-        2
-    );
+    // addItem(
+    //     "Groceries",
+    //     45,
+    //     "Food",
+    //     "Weekly supermarket run",
+    //     "2026-02-02",
+    //     3,
+    //     2
+    // );
 
-    addItem(
-        "Netflix Subscription",
-        15,
-        "Entertainment",
-        "Monthly streaming subscription",
-        "2026-02-01",
-        1,
-        1
-    );
+    // addItem(
+    //     "Netflix Subscription",
+    //     15,
+    //     "Entertainment",
+    //     "Monthly streaming subscription",
+    //     "2026-02-01",
+    //     1,
+    //     1
+    // );
 
-    addItem(
-        "Electricity Bill",
-        120,
-        "Utilities",
-        "January electricity payment",
-        "2026-01-28",
-        2,
-        1
-    );
+    // addItem(
+    //     "Electricity Bill",
+    //     120,
+    //     "Utilities",
+    //     "January electricity payment",
+    //     "2026-01-28",
+    //     2,
+    //     1
+    // );
 
-    addItem(
-        "Lunch with friends",
-        28,
-        "Food",
-        "Ramen near the office",
-        "2026-02-02",
-        1,
-        1
-    );
+    // addItem(
+    //     "Lunch with friends",
+    //     28,
+    //     "Food",
+    //     "Ramen near the office",
+    //     "2026-02-02",
+    //     1,
+    //     1
+    // );
 
 }
 
-
+// normal operations
 let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount) => {
     const newItem = new listItem(itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount);
     itemList.push(newItem)
@@ -154,6 +154,7 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
     // console.log(localStorage.getItem("itemList"))
 }
 
+// delete / undo
 let addToDeleteHistory = (item) => {
     deleteHistory.push([item])
 }
@@ -163,9 +164,8 @@ let removeItem = (idToRemove) => {
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
-    console.table(deleteHistory)
     renderPage();
-    storeState()
+    storeState();
 }
 
 let removeAllCurrentItem = () => {
@@ -174,8 +174,26 @@ let removeAllCurrentItem = () => {
     for (const item of itemsToRemove){
         removeItem(item.getId())
     }
-    console.log(getItemList())
 }
+
+let undoDelete = () => { 
+    if (deleteHistory.length > 0){
+        const itemsToRestore = deleteHistory.pop()
+        for (const item of itemsToRestore) {
+            addItem(item.name, item.cost, item.category, item.description, item.date, item.priority, item.count, item.id)
+        }
+        renderPage();
+        storeState();
+
+    }
+}
+
+
+
+
+
+
+
 
 const sortByPriority = (arr) => {
     arr.sort((a, b) => a.priority - b.priority);
@@ -347,7 +365,7 @@ export {
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
     setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency,
-    initState, storeState, removeAllCurrentItem, wipeState, addToDeleteHistory
+    initState, storeState, removeAllCurrentItem, wipeState, addToDeleteHistory, undoDelete
 }
 
 

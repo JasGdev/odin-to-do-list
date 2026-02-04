@@ -16,6 +16,7 @@ import {
     setSearchFilter,
     setSortingMode,
     setStartMonth,
+    undoDelete,
     wipeState
 } from './stateController.js';
 
@@ -32,6 +33,7 @@ function initInput() {
     sortBySearch();
     summaryPopup();  
     resetInput();
+    undoDeleteInput();
 }
 
 
@@ -429,6 +431,15 @@ function resetInput() {
 } 
 
 // undo delete
+
+function undoDeleteInput() {
+    const undoBtn = document.querySelector('.undoDeleteBtn')
+    undoBtn.addEventListener('click', function (){
+        undoDelete();
+        renderPage();
+    })
+
+}
 
 
 
