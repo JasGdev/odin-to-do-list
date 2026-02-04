@@ -4,8 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <script defer src="main.js"></script></head>
 <body>
+
+    <dialog id="addItemModal">
+        <div class="addItemModalDisplay">
+            <div class="addItemModalContent"></div>
+            <button id="addItemCloseModalBtn">X</button>
+        </div>
+    </dialog>
+
+    <dialog id="summaryModal">
+        <div class="summaryModalDisplay">
+            <div class="summaryModalContent">
+                <canvas id="summaryChart"></canvas>
+            </div>
+            <button id="summaryCloseModalBtn">X</button>
+        </div>
+    </dialog>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="actions">
+                <div class="add">
+                    <button id = 'openModalBtn' class="addBtn">Add item</button>
+                </div>
+
+                <div class="add">
+                    <button id='undoDeleteBtn' class="undoDeleteBtn">Undo Delete</button>
+                </div>
+
+                <div class="search">
+                    <form action="#" >
+                        <input type="text" class="searchFilter"  placeholder="Keyword search..." name="search"  autocomplete="off">       
+                    </form>
+                </div>
+                <div class="MonthSelect">
+                    
+                        <label for="startMonthSelect">Start/Current:</label>
+                        <input type="month" name="startMonthSelect" value=>
+                
+
+
+                        <label for="endMonthSelect">End/Until:</label>
+                        <input type="month" name="endMonthSelect" value=>
+                    
+      
+                </div>
+
+                <div class="summary">
+                    <button type="button" class="summaryBtn">Summary</button>
+                </div>
+
+
+                <div class="add">
+                    <button id='resetBtn' class="resetBtn">Reset All</button>
+                </div>
+
+                <div class="add">
+                    <button id='populateWithItemsBtn' class="populateWithItemsBtn">Populate with items</button>
+                </div>
+            </div>
+            <div class="categories">
+                <div class="categoryLabel">Categories</div>
+                <div class="categoryItems"></div>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
     
 </body>
 </html>
