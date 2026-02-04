@@ -91,10 +91,10 @@ const wipeState = () => {
     startMonth = '';
     endMonth = '';
     searchFilter = '';
-    deleteHistory = []
-
-
-
+    deleteHistory = []  
+    document.querySelectorAll('input[type="month"], input[type="text"]').forEach(input => {
+        input.value = '';
+    });
 }
 
 // normal operations
