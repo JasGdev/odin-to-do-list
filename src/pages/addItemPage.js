@@ -1,3 +1,5 @@
+import { getCategoryList, getItemList } from "../controllers/stateController.js";
+
 export default function addItemPage(){
     const content = document.querySelector('.content');
     const addItemModalContent = document.querySelector('.addItemModalContent')
@@ -23,7 +25,8 @@ export default function addItemPage(){
     form.innerHTML += `
     <div class="inputDiv">
         <label for="name">Item name</label>
-        <input type="text" name="name" required />
+        <input type="text" name="name" list="nameSuggestions" autocomplete="off" required />
+        <datalist id="nameSuggestions"></datalist>
     </div>
     <div class="inputDiv">
         <label for="cost">Cost</label>
@@ -35,7 +38,8 @@ export default function addItemPage(){
     </div>
     <div class="inputDiv">
         <label for="category">Category</label>
-        <input type="text" name="category" required />
+        <input type="text" name="category" list="categorySuggestions" autocomplete="off" required />
+        <datalist id="categorySuggestions"></datalist>
     </div>
     <div class="inputDiv">
         <label for="description">Description</label>
@@ -54,6 +58,27 @@ export default function addItemPage(){
     <input type="submit" value="Add item" />
     </div>
     `;
+    const nameDatalist = document.getElementById("nameSuggestions");
+    const categoryDatalist = document.getElementById("categorySuggestions");
+    nameDatalist.innerHTML = '';
+    categoryDatalist.innerHTML = '';
+
+    const categoryList = getCategoryList();
+    const itemList = getItemList();
+    const nameList = itemList.map((item) => item.getName())
+    const nameListNoDupe = [...new Set(nameList)];
+
+    categoryList.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.getName();  
+        categoryDatalist.appendChild(option);
+    });
+
+    nameListNoDupe.forEach(name => {
+        const option = document.createElement("option");
+        option.value = name;  
+        nameDatalist.appendChild(option);
+    });
 
 
 

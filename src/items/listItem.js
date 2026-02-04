@@ -18,6 +18,10 @@ export default class listItem {
     getTotalForItem(){
         return this.cost * this.count
     }
+
+    getName(){
+        return this.name
+    }
     
 
 }
