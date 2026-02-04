@@ -6,6 +6,7 @@ import {
     getCategoryList,
     getCategoryToHide,
     getItemById,
+    removeAllCurrentItem,
     removeCategoryToHide,
     removeItem,
     resetCategoryToHide,
@@ -13,7 +14,8 @@ import {
     setEndMonth,
     setSearchFilter,
     setSortingMode,
-    setStartMonth
+    setStartMonth,
+    wipeState
 } from './stateController.js';
 
 import { renderAddItemPage, renderPage, renderSummaryPage} from './displayController.js';
@@ -28,6 +30,8 @@ function initInput() {
     sortByMonthInputs();
     sortBySearch();
     summaryPopup();
+    deleteAllInput();
+    resetInput();
 }
 
 
@@ -274,7 +278,7 @@ function categoryInputs() {
 
     categoryHideAllBtn.addEventListener('click', function(){
         categoryToHideAll();
-        
+
         renderPage();
     })
 
@@ -410,12 +414,20 @@ function summaryPopup() {
 
 // delete all
 function deleteAllInput() {
-    const deleteAllBtn = document.querySelector('.itemListCategory .closeBtn')
-    deleteAllBtn.addEventListener('click', )
+    const deleteAllBtn = document.querySelector('[data-item-i-d="topRowClose"]');
+    deleteAllBtn.addEventListener('click', function(){
+        removeAllCurrentItem();
+    })
 }
 
-
-
+// reset
+function resetInput() {
+    const resetBtn = document.querySelector('.resetBtn');
+    resetBtn.addEventListener('click', function () {
+        wipeState();
+        renderPage();
+    })
+} 
 
 // undo delete
 

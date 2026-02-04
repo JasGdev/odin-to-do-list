@@ -75,7 +75,24 @@ const storeState = () => {
     localStorage.setItem('searchFilter', searchFilter)
 }
 
-
+const wipeState = () => {
+    localStorage.setItem("itemList", [])
+    localStorage.setItem("deleteHistory", [])
+    localStorage.setItem('categoryList', [])
+    localStorage.setItem('sortingMode', 'default')
+    localStorage.setItem('categoryToHide', [])
+    localStorage.setItem('startMonth', '')
+    localStorage.setItem('endMonth', '')
+    localStorage.setItem('searchFilter', '')
+    itemList = [];
+    categoryList = [];
+    sortingMode = 'default';
+    categoryToHide = [];
+    startMonth = '';
+    endMonth = '';
+    searchFilter = '';
+    deleteHistory = []
+}
 
 
 let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, itemPriority, itemCount) => {
@@ -104,6 +121,10 @@ let removeItem = (idToRemove) => {
     console.log(deleteHistory)
     renderPage();
     storeState()
+}
+
+let removeAllCurrentItem = () => {
+    console.log(getItemList())
 }
 
 const sortByPriority = (arr) => {
@@ -264,13 +285,16 @@ let getCurrency = () => {
     return currency
 }
 
+let get
+
 
 
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
     setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency,
-    initState, storeState}
+    initState, storeState, removeAllCurrentItem, wipeState
+}
 
 
 

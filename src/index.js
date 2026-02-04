@@ -8,15 +8,20 @@ import "./styles/summary.css"
 
 import { initInput } from "./controllers/inputController.js";
 import { initDisplay } from "./controllers/displayController.js";
-import {addItem, initState} from "./controllers/stateController.js";
+import {addItem, getItemList, getCategoryList, initState, getCategoryToHide} from "./controllers/stateController.js";
 import category from "./items/category.js"
 import listItem from "./items/listItem.js"
 import { storageAvailable } from "./controllers/localStorageHelper.js";
 storageAvailable
 
-initInput();
+
 initState();
 initDisplay();  
+initInput();
+console.log(getItemList());
+console.log(getCategoryList())
+console.log(getCategoryToHide())
+
 
 
 // addItem(
