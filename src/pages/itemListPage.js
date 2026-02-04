@@ -1,9 +1,9 @@
     import { getSortingMode, itemListInputs, sortByInputs } from "../controllers/inputController.js";
-    import { getCategoryColor, getItemList } from "../controllers/stateController.js";
+    import { getCategoryColor, getCurrency, getItemList } from "../controllers/stateController.js";
 import { getTextColor } from "../controllers/utils.js";
 
     const columns = ['date', 'name', 'cost', 'count' , 'total', 'category', 'description', 'priority', 'X'];
-    const currency = '¥';
+    
 
     export default function itemListPage() {
         const content = document.querySelector('.content');
@@ -24,6 +24,7 @@ import { getTextColor } from "../controllers/utils.js";
 
 
     function createItemRow(item) {
+        const currency = getCurrency();
         const page = document.querySelector('.page.itemListPage')
         const itemCategory = item.category;
         for (const column of columns) {

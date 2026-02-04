@@ -1,31 +1,58 @@
+import { getCategoryList, getCurrency } from "../controllers/stateController.js";
+import Chart from 'chart.js/auto';
+
 export default function summaryPage(){
-    const content = document.querySelector('.content');
     const summaryModalContent = document.querySelector('.summaryModalContent')
-    
-    summaryModalContent.innerHTML ='';
+    summaryModalContent.innerHTML ='<canvas id="summaryChart"></canvas>';
 
 
-    
-    // const pageContainer = document.createElement('div');
-    // pageContainer.classList.add('pageContainer', 'summaryPage')
-    // content.appendChild(pageContainer)
+    // Add pie chart
+
+    const categoryList = getCategoryList();
+    const names = categoryList.map(category => category.getName())
+    const totals = categoryList.map(category => category.getTotalSpending());
+    const colors = categoryList.map(category => category.getColor());
+
+    console.log(names, totals, colors)
+    new Chart( "summaryChart", {
+        type: "pie",
+        data: {
+            labels: names,
+            datasets: [{
+                backgroundColor: colors,
+                data: totals
+            }]
+        },
+        options: {
+            plugins:{
+                title: {
+                    display: true,
+                    text: "Spending summary"
+                }
+            }
+            
+        }
+    });
+
+    // Add spending details
+    const spendingDetail = document.createElement('div');
+    spendingDetail.classList.add('spendingDetail')
+
+    categoryList.sort((a,b) => b.getTotalSpending() - a.getTotalSpending())
+    categoryList.forEach((category) => {
+        const line = document.createElement('div')
+        line.classList.add('summaryLine')
+
+        line.innerHTML = `
+        <span class = 'name' > ${category.getName()} </span>
+        <span class = 'equal'> =</span>
+        <span class = 'total'>${getCurrency() + category.getTotalSpending()}</span>
+        `
+        spendingDetail.appendChild(line)
+    })
+    summaryModalContent.appendChild(spendingDetail)
 
 
-    const page = document.createElement('div');
-    page.classList.add('page','summaryPage');
-    summaryModalContent.appendChild(page);
-
-    const form  = document.createElement('form');
-    form.setAttribute('method', "get");
-    form.classList.add('summaryForm')
-    page.appendChild(form)
-
-    form.innerHTML += `
-    <div class="inputDiv">
-        <label for="name">Item name</label>
-        <input type="text" name="name" required />
-    </div>
-    `;
 
 
 

@@ -10,6 +10,7 @@ let categoryToHide = [];
 let startMonth = '';
 let endMonth = '';
 let searchFilter = '';
+let currency = '¥';
 
 
 
@@ -182,10 +183,15 @@ let setSearchFilter = (searchValue) => {
     searchFilter = searchValue;
 }
 
+let getCurrency = () => {
+    return currency
+}
+
+
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
-    setSortingMode, setEndMonth, setStartMonth, setSearchFilter}
+    setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency}
 
 
 

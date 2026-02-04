@@ -26,4 +26,13 @@ export default class category {
         return this.items.length;
     }
 
+    getColor(){
+        return this.color;
+    }
+
+    getName(){
+        return this.nameOfCategory;
+    }
+
+
 }
