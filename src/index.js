@@ -18,9 +18,6 @@ storageAvailable
 initState();
 initDisplay();  
 initInput();
-console.log(getItemList());
-console.log(getCategoryList())
-console.log(getCategoryToHide())
 
 
 

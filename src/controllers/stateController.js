@@ -154,18 +154,26 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
     // console.log(localStorage.getItem("itemList"))
 }
 
+let addToDeleteHistory = (item) => {
+    deleteHistory.push([item])
+}
+
 let removeItem = (idToRemove) => {
     const itemToRemove = getItemById(idToRemove)
-    deleteHistory.push([itemToRemove])
     const categoryFound = categoryList.find(categoryInList => categoryInList.nameOfCategory === itemToRemove.category);
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
-    console.log(deleteHistory)
+    console.table(deleteHistory)
     renderPage();
     storeState()
 }
 
 let removeAllCurrentItem = () => {
+    const itemsToRemove = getItemList();
+    deleteHistory.push(itemsToRemove)
+    for (const item of itemsToRemove){
+        removeItem(item.getId())
+    }
     console.log(getItemList())
 }
 
@@ -339,7 +347,7 @@ export {
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
     setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency,
-    initState, storeState, removeAllCurrentItem, wipeState
+    initState, storeState, removeAllCurrentItem, wipeState, addToDeleteHistory
 }
 
 

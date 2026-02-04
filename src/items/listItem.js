@@ -22,6 +22,10 @@ export default class listItem {
     getName(){
         return this.name
     }
+
+    getId(){
+        return this.id
+    }
     
 
 }

@@ -1,6 +1,7 @@
 import {
     addCategoryToHide,
     addItem,
+    addToDeleteHistory,
     categoryToHideAll,
     displayItem,
     getCategoryList,
@@ -29,8 +30,7 @@ function initInput() {
     addItemInputs();
     sortByMonthInputs();
     sortBySearch();
-    summaryPopup();
-    deleteAllInput();
+    summaryPopup();  
     resetInput();
 }
 
@@ -109,6 +109,7 @@ function itemListInputs() {
         closeButtons.forEach((button) => {
             if (button.dataset.itemID !== 'topRowClose') {
                 button.addEventListener('click', function () {
+                    addToDeleteHistory(getItemById(button.dataset.itemID));
                     removeItem(button.dataset.itemID);
                 })
 
@@ -432,4 +433,5 @@ function resetInput() {
 
 
 
-export { initInput, itemListInputs, categoryInputs, getSortingMode, sortByInputs}
+export { initInput, itemListInputs, categoryInputs,
+     getSortingMode, sortByInputs, deleteAllInput}

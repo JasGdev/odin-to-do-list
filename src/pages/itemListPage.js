@@ -1,4 +1,4 @@
-    import { getSortingMode, itemListInputs, sortByInputs } from "../controllers/inputController.js";
+    import { deleteAllInput, getSortingMode, itemListInputs, sortByInputs } from "../controllers/inputController.js";
     import { getCategoryColor, getCurrency, getItemList } from "../controllers/stateController.js";
 import { getTextColor } from "../controllers/utils.js";
 
@@ -20,6 +20,7 @@ import { getTextColor } from "../controllers/utils.js";
 
         itemListInputs();
         sortByInputs();
+        deleteAllInput();
     }
 
 

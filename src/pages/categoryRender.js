@@ -57,7 +57,6 @@ export function categoryRender(){
         const categoryControl = document.createElement('div');
         const categoryToHide = getCategoryToHide();
         if (categoryToHide.includes(category.nameOfCategory)){
-            console.table(categoryToHide)
             categoryControl.innerHTML = `
             <form>
                 <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
@@ -65,7 +64,6 @@ export function categoryRender(){
             </form>
             `
         } else if (categoryToHide.includes(category.nameOfCategory) == false) {
-            console.table(categoryToHide)
             categoryControl.innerHTML = `
             <form>
                 <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
