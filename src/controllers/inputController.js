@@ -15,9 +15,8 @@ import {
     setStartMonth
 } from './stateController.js';
 
-import { renderAddItemPage, renderItemListPage } from './displayController.js';
+import { renderAddItemPage, renderPage, renderSummaryPage} from './displayController.js';
 import { getCurrentTime, getTextColor } from './utils.js'
-import { renderPage} from './displayController.js';
 
 
 
@@ -27,6 +26,7 @@ function initInput() {
     addItemInputs();
     sortByMonthInputs();
     sortBySearch();
+    summaryPopup();
 }
 
 
@@ -48,12 +48,11 @@ function addItemInputs() {
                 e.clientY > dialogDimensions.bottom
             ) {
                 modal.close();
-                modal.remove();
             }
         })
         closeBtn.addEventListener('click', () => {
             modal.close();
-            modal.remove();
+
             
         });
     })();
@@ -380,7 +379,7 @@ function sortBySearch() {
 
 function summaryPopup() {
     const modal = document.getElementById('summaryModal');
-    const openBtn = document.getElementById('summaryBtn');
+    const openBtn = document.querySelector('.summaryBtn');
     const closeBtn = document.getElementById('summaryCloseModalBtn');
 
     (function summaryModalSetup() {
@@ -396,21 +395,16 @@ function summaryPopup() {
                 e.clientY > dialogDimensions.bottom
             ) {
                 modal.close();
-                modal.remove();
             }
         })
         closeBtn.addEventListener('click', () => {
-            modal.close();
-            modal.remove();
-            
+            modal.close();            
         });
     })();
 
     (function summaryPagePopup() {
-        const addBtn = document.querySelector('.addBtn')
-        addBtn.addEventListener('click', function () {
-            renderSummaryPage()
-            summarySubmitSetup()
+        openBtn.addEventListener('click', function () {
+            renderSummaryPage();
         })
     })();
 }
