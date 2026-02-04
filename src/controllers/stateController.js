@@ -94,45 +94,6 @@ const wipeState = () => {
     deleteHistory = []
 
 
-    // addItem(
-    //     "Groceries",
-    //     45,
-    //     "Food",
-    //     "Weekly supermarket run",
-    //     "2026-02-02",
-    //     3,
-    //     2
-    // );
-
-    // addItem(
-    //     "Netflix Subscription",
-    //     15,
-    //     "Entertainment",
-    //     "Monthly streaming subscription",
-    //     "2026-02-01",
-    //     1,
-    //     1
-    // );
-
-    // addItem(
-    //     "Electricity Bill",
-    //     120,
-    //     "Utilities",
-    //     "January electricity payment",
-    //     "2026-01-28",
-    //     2,
-    //     1
-    // );
-
-    // addItem(
-    //     "Lunch with friends",
-    //     28,
-    //     "Food",
-    //     "Ramen near the office",
-    //     "2026-02-02",
-    //     1,
-    //     1
-    // );
 
 }
 
@@ -192,7 +153,48 @@ let undoDelete = () => {
 
 
 
+let populateWithItems = () => {
 
+    addItem(
+        "Groceries",
+        45,
+        "Food",
+        "Weekly supermarket run",
+        "2026-02-02",
+        3,
+        2
+    );
+
+    addItem(
+        "Netflix Subscription",
+        15,
+        "Entertainment",
+        "Monthly streaming subscription",
+        "2026-02-01",
+        1,
+        1
+    );
+
+    addItem(
+        "Electricity Bill",
+        120,
+        "Utilities",
+        "January electricity payment",
+        "2026-01-28",
+        2,
+        1
+    );
+
+    addItem(
+        "Lunch with friends",
+        28,
+        "Food",
+        "Ramen near the office",
+        "2026-02-02",
+        1,
+        1
+    );
+}
 
 
 const sortByPriority = (arr) => {
@@ -365,7 +367,7 @@ export {
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
     setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency,
-    initState, storeState, removeAllCurrentItem, wipeState, addToDeleteHistory, undoDelete
+    initState, storeState, removeAllCurrentItem, wipeState, addToDeleteHistory, undoDelete, populateWithItems
 }
 
 

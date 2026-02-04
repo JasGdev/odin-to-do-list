@@ -7,6 +7,7 @@ import {
     getCategoryList,
     getCategoryToHide,
     getItemById,
+    populateWithItems,
     removeAllCurrentItem,
     removeCategoryToHide,
     removeItem,
@@ -34,6 +35,7 @@ function initInput() {
     summaryPopup();  
     resetInput();
     undoDeleteInput();
+    populateWithItemsInput();
 }
 
 
@@ -436,6 +438,17 @@ function undoDeleteInput() {
     const undoBtn = document.querySelector('.undoDeleteBtn')
     undoBtn.addEventListener('click', function (){
         undoDelete();
+        renderPage();
+    })
+
+}
+
+// sample Items
+
+function populateWithItemsInput() {
+    const populateBtn = document.querySelector('.populateWithItemsBtn')
+    populateBtn.addEventListener('click', function () {
+        populateWithItems();
         renderPage();
     })
 
