@@ -1,5 +1,5 @@
 export default class listItem {
-    constructor(name, cost, category, description, date, priority, count){
+    constructor(name, cost, category, description, date, priority, count, id = crypto.randomUUID()){
         // need input
         this.name = name;
         this.cost = cost;
@@ -12,7 +12,7 @@ export default class listItem {
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.id = crypto.randomUUID(); 
+        this.id = id; 
     }
 
     getTotalForItem(){

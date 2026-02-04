@@ -1,8 +1,8 @@
 export default class category {
-    constructor(name) {
+    constructor(name, items = [], color = '#D3D3D3') {
         this.nameOfCategory = name;
-        this.items = [];
-        this.color = '#D3D3D3';
+        this.items = items;
+        this.color = color;
     }
 
     addItem(item){

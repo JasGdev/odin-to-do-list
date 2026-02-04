@@ -1,6 +1,13 @@
 import listItem from '../items/listItem.js'
 import category from '../items/category.js'
 import { renderPage } from './displayController.js';
+import { categoryLoader, itemLoader } from './localStorageHelper.js';
+
+
+
+
+
+
 
 let itemList = [];
 let categoryList = [];
@@ -11,6 +18,57 @@ let startMonth = '';
 let endMonth = '';
 let searchFilter = '';
 let currency = '¥';
+
+// local storage
+const initState = () => {
+    const storedItems = localStorage.getItem("itemList");
+    if (storedItems) {
+        itemList = itemLoader(JSON.parse(storedItems));
+    }
+
+    const storedCategories = localStorage.getItem('categoryList');
+    if (storedCategories) {
+        categoryList = categoryLoader(JSON.parse(storedCategories));
+    }
+
+    const storedSortingMode = localStorage.getItem('sortingMode')
+    if (storedSortingMode) {
+        sortingMode = storedSortingMode;
+    }
+
+    const storedCategoryToHide = localStorage.getItem('categoryToHide')
+    if (storedCategoryToHide) {
+        categoryToHide = JSON.parse(storedCategoryToHide);
+    }
+
+    const storedStartMonth = localStorage.getItem('startMonth')
+    if (storedStartMonth) {
+        startMonth = storedStartMonth;
+    }
+
+    const storedEndMonth = localStorage.getItem('endMonth')
+    if (storedEndMonth) {
+        endMonth = storedEndMonth;
+    }
+
+    const storedSearchFilter = localStorage.getItem('searchFilter')
+    if (storedSearchFilter) {
+        searchFilter = storedSearchFilter;
+    }
+
+    console.log(storedItems)
+};
+
+const storeState = () => {
+    localStorage.setItem("itemList", JSON.stringify(itemList))
+    localStorage.setItem('categoryList', JSON.stringify(categoryList))
+    localStorage.setItem('sortingMode', sortingMode)
+    localStorage.setItem('categoryToHide', JSON.stringify(categoryToHide))
+    localStorage.setItem('startMonth', startMonth)
+    localStorage.setItem('endMonth', endMonth)
+    localStorage.setItem('searchFilter', searchFilter)
+}
+
 
 
 
@@ -25,7 +83,10 @@ let addItem = (itemName, itemCost, itemCategory, itemDescription, itemDate, item
         newCategory.addItem(newItem)
         categoryList.push(newCategory)
     } 
-    renderPage();    
+    renderPage();
+    // console.log('addItemStored')
+    storeState();
+    // console.log(localStorage.getItem("itemList"))
 }
 
 let removeItem = (idToRemove) => {
@@ -35,6 +96,7 @@ let removeItem = (idToRemove) => {
     categoryFound.removeItem(idToRemove)
     itemList = itemList.filter((item) => item.id !== idToRemove);
     renderPage();
+    storeState()
 }
 
 const sortByPriority = (arr) => {
@@ -131,14 +193,17 @@ let getCategoryList = () => {
 
 let resetCategoryToHide = () => {
     categoryToHide = [];
+    storeState()
 }
 
 let addCategoryToHide = (category) => {
     categoryToHide.push(category)
+    storeState()
 }
 
 let removeCategoryToHide = (category) => {
     categoryToHide = categoryToHide.filter(item => item.nameOfCategory == category)
+    storeState()
 }
 
 let getCategoryToHide = () => {
@@ -147,6 +212,7 @@ let getCategoryToHide = () => {
 
 let categoryToHideAll = () => {
     categoryToHide = categoryList.map(category => category.nameOfCategory);
+    storeState()
 }
 
 let getCategoryColor = (category) => {
@@ -161,14 +227,17 @@ let setCategoryToColor = (category, color) => {
         c => c.nameOfCategory == category
     )
     foundCategory.color = color;
+    storeState()
 }
 
 let setStartMonth = (month) => {
     startMonth = month;
+    storeState()
 }
 
 let setEndMonth = (month) => {
     endMonth = month;
+    storeState()
 }
 
 // Temporary display item which will be implemented in UI later
@@ -181,6 +250,7 @@ let displayItem = () => {
 
 let setSearchFilter = (searchValue) => {
     searchFilter = searchValue;
+    storeState()
 }
 
 let getCurrency = () => {
@@ -191,7 +261,8 @@ let getCurrency = () => {
 export { 
     addItem, displayItem, removeItem, getItemList, getItemById, 
     getCategoryList, resetCategoryToHide, addCategoryToHide, removeCategoryToHide, getCategoryToHide, categoryToHideAll, getCategoryColor, setCategoryToColor,
-    setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency}
+    setSortingMode, setEndMonth, setStartMonth, setSearchFilter, getCurrency,
+    initState, storeState}
 
 
 

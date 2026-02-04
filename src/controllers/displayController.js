@@ -2,6 +2,7 @@ import addItemPage from '../pages/addItemPage.js'
 import itemListPage from '../pages/itemListPage.js';
 import { categoryRender } from '../pages/categoryRender.js';
 import summaryPage from '../pages/summaryPage.js';
+import { storeState } from './stateController.js';
 
 function initDisplay(){
     renderPage();
@@ -10,6 +11,7 @@ function initDisplay(){
 function renderPage(){
     renderItemListPage();
     renderCategories();
+    storeState();
 }
 
 function renderAddItemPage(){

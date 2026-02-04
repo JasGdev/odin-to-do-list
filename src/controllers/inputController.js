@@ -4,6 +4,7 @@ import {
     categoryToHideAll,
     displayItem,
     getCategoryList,
+    getCategoryToHide,
     getItemById,
     removeCategoryToHide,
     removeItem,
@@ -258,8 +259,6 @@ function categoryInputs() {
             } else if (checkBox.checked == true){
                 removeCategoryToHide(checkBox.value);
             }
-            console.log(getCategoryList())
-            
             renderPage();
             
         })
@@ -280,14 +279,13 @@ function categoryInputs() {
     })
 
     // color selectors
+    
     const categoryColorSelectors = document.querySelectorAll('.categoryColor')
     categoryColorSelectors.forEach((colorSelector) => {
 
         const category = colorSelector.id;
         const divs = document.querySelectorAll(`[data-item-category=${category}]`);
         
-
-
         colorSelector.addEventListener("input", (e) => {
             const color = e.target.value;
             const textColor = getTextColor(color)
