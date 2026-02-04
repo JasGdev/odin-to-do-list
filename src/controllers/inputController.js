@@ -264,7 +264,6 @@ function categoryInputs() {
                 removeCategoryToHide(checkBox.value);
             }
             renderPage();
-            
         })
     })
 
@@ -278,7 +277,6 @@ function categoryInputs() {
 
     categoryHideAllBtn.addEventListener('click', function(){
         categoryToHideAll();
-
         renderPage();
     })
 

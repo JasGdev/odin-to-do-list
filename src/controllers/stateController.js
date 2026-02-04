@@ -92,6 +92,48 @@ const wipeState = () => {
     endMonth = '';
     searchFilter = '';
     deleteHistory = []
+
+
+    addItem(
+        "Groceries",
+        45,
+        "Food",
+        "Weekly supermarket run",
+        "2026-02-02",
+        3,
+        2
+    );
+
+    addItem(
+        "Netflix Subscription",
+        15,
+        "Entertainment",
+        "Monthly streaming subscription",
+        "2026-02-01",
+        1,
+        1
+    );
+
+    addItem(
+        "Electricity Bill",
+        120,
+        "Utilities",
+        "January electricity payment",
+        "2026-01-28",
+        2,
+        1
+    );
+
+    addItem(
+        "Lunch with friends",
+        28,
+        "Food",
+        "Ramen near the office",
+        "2026-02-02",
+        1,
+        1
+    );
+
 }
 
 
@@ -219,18 +261,21 @@ let getCategoryList = () => {
     return categoryList
 }
 
+// Category To Hide
+
+// addCategoryToHide and removeCategoryToHide gets called with 'category' name
 let resetCategoryToHide = () => {
     categoryToHide = [];
     storeState()
 }
 
-let addCategoryToHide = (category) => {
-    categoryToHide.push(category)
+let addCategoryToHide = (categoryName) => {
+    categoryToHide.push(categoryName)
     storeState()
 }
 
-let removeCategoryToHide = (category) => {
-    categoryToHide = categoryToHide.filter(item => item.nameOfCategory == category)
+let removeCategoryToHide = (categoryName) => {
+    categoryToHide = categoryToHide.filter(category => category != categoryName)
     storeState()
 }
 
@@ -243,6 +288,7 @@ let categoryToHideAll = () => {
     storeState()
 }
 
+// Category Color
 let getCategoryColor = (category) => {
     const foundCategory = categoryList.find(
         c => c.nameOfCategory == category

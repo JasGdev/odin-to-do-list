@@ -57,13 +57,15 @@ export function categoryRender(){
         const categoryControl = document.createElement('div');
         const categoryToHide = getCategoryToHide();
         if (categoryToHide.includes(category.nameOfCategory)){
+            console.table(categoryToHide)
             categoryControl.innerHTML = `
             <form>
                 <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
-                <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}" > 
+                <input class = 'categoryShow' type="checkbox" id="${category.nameOfCategory}Show" name="categoryShow" value="${category.nameOfCategory}"> 
             </form>
             `
-        } else {
+        } else if (categoryToHide.includes(category.nameOfCategory) == false) {
+            console.table(categoryToHide)
             categoryControl.innerHTML = `
             <form>
                 <input class = 'categoryColor' type = 'color' id="${category.nameOfCategory}" name="categoryColor" value="${category.color}">
@@ -76,13 +78,6 @@ export function categoryRender(){
         
        
         categoryRow.appendChild(categoryControl)
-
-
-
-        const categoryItemDisplay = document.createElement('div');
-
-        
-
 
 
     })
