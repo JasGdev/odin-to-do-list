@@ -1,74 +1,52 @@
-## Instead of a to do list will instead implement a shopping list
+# Budget Tracker
+
+A modular budget tracking web app built as part of The Odin Project curriculum.  
+Originally started as a to-do list assignment, this project evolved into a full budget tracker with persistent state, advanced filtering, and visual summaries.
+
+## Features
+
+### Item fields
+- Date  
+- Name  
+- Category  
+- Cost  
+- Count  
+- Total (Cost × Count)  
+- Description  
+- Priority  
+- ID (internal / hidden)
+
+### Core functionality
+- Add items with autofill suggestions for existing item names and categories
+- Delete individual items
+- Delete all items
+- Undo delete
+- Assign a background color per category to visually distinguish items
+- Persistent state using browser localStorage
+- Summary dashboard with a pie chart showing spending by category
+- Reset all data (clears localStorage and current session)
+- Populate app with sample items for testing and demos
+
+### Filtering & sorting
+- Filter items by category (show / hide categories)
+- Keyword search filter
+- Date range filtering:
+  - Start month only
+  - End month only
+  - Start → end month range
+- Sortable columns (ascending / descending via left-click / right-click):
+  - Date
+  - Name
+  - Cost
+  - Count
+  - Total
+  - Category
+  - Priority
 
 
-### to-shop-items will have
-1. title
-2. description
-3. dueDate
-4. cost (with calculations for tax)
-5. checklist
-6. payment method (cash, card)
-7. priority
-
-### instead of projects will do spending categories that items can be put in
-
-- able to tally up total cost in each category
-- default 'project' is just undefined spending
-- users are able to then create new spending categories and choose which spending categories their item go into
-
-
-
-Index
-```bash
-# loads controllers
-import inputController from './controllers/inputController.js';
-import displayController from './controllers/displayController.js';
-
-inputController.init();
-displayController.render();
-```
-
-State Controller
-```bash
-# keeps the state values 
-let itemList = [];
-let categoryList = [];
-const tax = 0.08
-let totalSpending = 0;
-
-# offers methods to manipulate values
-function addItem()
-function removeItemById()
-function addCategory()
-function removeCategory()
-function getItemList()
-etc
-```
-
-
-Input Controller
-```bash
-# adds action listener that imports stateListener actions that manipulate the state values
-```
-
-Display Controller
-```bash
-# renders pages as needed imports getItemList/getCategory... from StateController to dictate what to display
-```
-
-Sorting options:
-
-1. filter categories
-2. sort by 
-    - date
-    - name
-    - cost
-    - count
-    - total
-    - category
-3. default sorted by priority/date
-
-
-
-
-
+  ## Tech stack
+- JavaScript (ES6 modules)
+- Webpack (bundling, dev server, asset handling)
+- CSS
+- Chart.js
+- Browser localStorage for persistence
